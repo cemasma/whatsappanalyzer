@@ -6,12 +6,18 @@ import (
 	"strings"
 )
 
+type Word struct {
+	Key   string
+	Value int
+}
+
 func main() {
 	byt, _ := ioutil.ReadFile("C:\\Users\\cemasma\\Desktop\\langüage öf ıngilazca ile WhatsApp Sohbeti.txt")
 	//fmt.Println(string(byt))
 
-	words := getWordsWithCounts(getWords(string(byt)))
+	words := getWordsByValue(getWordsWithCounts(getWords(string(byt))))
 	fmt.Println(words)
+
 }
 
 func getWords(chatRecord string) []string {
@@ -29,5 +35,24 @@ func getWords(chatRecord string) []string {
 }
 
 func getWordsWithCounts(words []string) map[string]int {
+	wordsWithCounts := make(map[string]int)
 
+	for _, value := range words {
+		if _, ok := wordsWithCounts[value]; ok {
+			wordsWithCounts[value]++
+		} else {
+			wordsWithCounts[value] = 1
+		}
+	}
+	return wordsWithCounts
+}
+
+func getWordsByValue(wordsWithCounts map[string]int) map[int][]string {
+	wordsByCounts := make(map[int][]string)
+
+	for key, value := range wordsWithCounts {
+		wordsByCounts[value] = append(wordsByCounts[value], key)
+	}
+
+	return wordsByCounts
 }
