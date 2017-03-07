@@ -1,6 +1,7 @@
 # whatsapp-analyzer
 
-It find out most used words in your Whatsapp chat records.
+It helps to analyze your Whatsapp chat records with making parse on chat texts. As example you can measure the aggression, you can see the words in order of use and you can see the frequency of talking.
+
 
 # Installation
 
@@ -13,17 +14,17 @@ It find out most used words in your Whatsapp chat records.
 
 # Usage
 
-1. First you must send the chat record to your email from Whatsapp.
-    For this: https://www.whatsapp.com/faq/en/s60/21055276
-    
-    Download the chat record from your email after export.
+First you must send the chat record to your email from Whatsapp. After export, download the chat record from your email.
+<br>For this: https://www.whatsapp.com/faq/en/s60/21055276
 
-<br>
-2. Open your command line in directory where is you was installed the program. Now you can use these commands.
+Open your command line in directory where you was installed the program. Now you can use these commands.
+
 * file
 * username
 * limit
 * start
+* word
+* negatives
 
 For find most used words in general;
 ```sh
@@ -53,3 +54,32 @@ You can combine start and limit;
 ```sh
 analyzer --file "C:\chatrecor.txt" --start 10 --limit 20
 ```
+
+For find the count of specific word or sentence;
+```sh
+analyzer --file "C:\chatrecor.txt" --word "test"
+```
+
+```sh
+analyzer --file "C:\chatrecor.txt" --word "hello world"
+```
+
+If you send the negative words in a file you can measure the aggression by these words.
+
+That file's content must be like this;
+```
+negativeword1
+negativeword2
+negativeword3
+```
+
+After creation that file you can use it like this;
+```sh
+analyzer --file "C:\chatrecord.txt" --negatives "C:\negatives.txt"
+```
+
+For a specific user;
+```sh
+analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --negatives "C:\negatives.txt"
+```
+
