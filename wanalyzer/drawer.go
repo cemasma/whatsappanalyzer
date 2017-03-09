@@ -6,8 +6,17 @@ import (
 	"github.com/fogleman/gg"
 )
 
-func DrawFrequence(frequence []MessageFrequence, imageName string) {
-	width, height := len(frequence)*100+70, (getHeight(frequence)/10)+100
+type Drawer struct {
+	ImageName string
+	Frequence []MessageFrequence
+}
+
+func NewGraph(imageName string) Drawer {
+	return Drawer{ImageName: imageName}
+}
+
+func (dr Drawer) DrawFrequence(frequence []MessageFrequence) {
+	width, height := len(frequence)*100+70, (dr.getHeight(frequence)/10)+100
 	context := gg.NewContext(width, height)
 
 	context.SetHexColor("#e6fae6")
@@ -24,11 +33,11 @@ func DrawFrequence(frequence []MessageFrequence, imageName string) {
 	}
 
 	context.Rotate(90)
-	context.SavePNG(imageName)
+	context.SavePNG(dr.ImageName)
 
 }
 
-func getHeight(frequence []MessageFrequence) (max int) {
+func (dr Drawer) getHeight(frequence []MessageFrequence) (max int) {
 	for _, elem := range frequence {
 		if elem.Count > max {
 			max = elem.Count

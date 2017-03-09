@@ -1,32 +1,28 @@
-package util
+package wanalyzer
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
-type Word struct {
-	Content string
-	Value   int
-}
-
-func Contains(arr []string, elem string) bool {
-	for _, val := range arr {
-		if val == elem {
-			return true
+func CountWordInLines(word string, lines []string) (count int) {
+	if strings.Index(word, " ") > -1 {
+		for _, value := range lines {
+			if strings.Index(value, word) > -1 {
+				count += len(regexp.MustCompile("\\b"+word+"\\b").FindAllString(value, -1))
+			}
 		}
-	}
-	return false
-}
-
-func SeparateWords(lines []string) []string {
-	words := []string{}
-	for _, value := range lines {
-		sentence := strings.Split(value, ":")
-		if len(sentence) > 2 {
-			wordArr := strings.Split(sentence[2], " ")
-			words = append(words, wordArr...)
+	} else {
+		separatedWords := GetWordsWithOrder(lines)
+		for _, value := range separatedWords {
+			if value.Content == word {
+				count = value.Value
+				return
+			}
 		}
 	}
 
-	return words
+	return
 }
 
 func SortWordsByCount(pureWords []string) []Word {
@@ -61,29 +57,6 @@ func GetMessageCount(lines []string, date string) (count int) {
 		}
 	}
 	return
-}
-
-func isNotIgnored(word string) bool {
-	for _, value := range getIgnoredWords() {
-		if word == value {
-			return false
-		}
-	}
-	return true
-}
-
-func makeValuesAsKey(wordsWithCounts map[string]int) map[int][]string {
-	wordsByCounts := make(map[int][]string)
-
-	for key, value := range wordsWithCounts {
-		wordsByCounts[value] = append(wordsByCounts[value], key)
-	}
-
-	return wordsByCounts
-}
-
-func getIgnoredWords() []string {
-	return []string{"<medya", "atlanmış>", "http", "https", "", "<media", "omitted>"}
 }
 
 func countWords(words []string) map[string]int {

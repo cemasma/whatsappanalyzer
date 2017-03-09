@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"strings"
 
 	"./wanalyzer"
@@ -27,34 +26,60 @@ func main() {
 		"\tLetters of the word must be lower."+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --word \"test\"")
 
-	negativesFileAddress := flag.String("negatives", "", "If you want to measure aggression use it.\n"+
+	negativesFile := flag.String("negatives", "", "If you want to measure aggression use it.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --negatives \"C:\\negativewords.txt\" ")
 
-	messageFrequency := flag.Bool("mf", false, "It measure the talking frequency in date by date")
+	messageFrequency := flag.Bool("messagef", false, "It measure the talking frequency in date by date."+
+		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef")
 
+	printFrequency := flag.Bool("printf", false, "It sorts frequency by activity and prints."+
+		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef --printf")
 	flag.Parse()
 
-	chatByt, _ := ioutil.ReadFile(*file)
-	lines := wanalyzer.GetLines(string(chatByt))
+	lines := wanalyzer.GetLines(wanalyzer.Read(*file))
 
 	if len(*username) > 0 {
 		lines = wanalyzer.GetUserLines(lines, *username)
 	}
 
 	if len(*word) > 0 {
-		count := wanalyzer.FindWordInLines(*word, lines)
-		fmt.Printf("%s\t\t\t\t\tCount: %d", *word, count)
-	} else if len(*negativesFileAddress) > 0 {
-		negativesByt, _ := ioutil.ReadFile(*negativesFileAddress)
-		calculatedAgg := wanalyzer.CalculateAggression(lines, strings.Split(string(negativesByt), "\r\n"))
 
-		fmt.Printf("The aggression level is: %d", calculatedAgg)
+		count := wanalyzer.CountWordInLines(*word, lines)
+		fmt.Printf("%s\t\t\t\t\tCount: %d", *word, count)
+	} else if len(*negativesFile) > 0 && len(*username) > 0 {
+		count := wanalyzer.AggressionCount(lines, strings.Split(wanalyzer.Read(*negativesFile), "\r\n"))
+
+		fmt.Printf("%s's aggression count is: %d", *username, count)
+	} else if len(*negativesFile) > 0 {
+		calculatedAgg := wanalyzer.CalculateAggression(lines, strings.Split(wanalyzer.Read(*negativesFile), "\r\n"))
+
+		for key, val := range calculatedAgg {
+			if key != "total" {
+				percent := (float64((val * 100)) / float64(calculatedAgg["total"]))
+				fmt.Printf("%s %f percent aggressive by total. \n", key, percent)
+				fmt.Printf("%s's using count is %d\n\n", key, val)
+			}
+		}
+
+		fmt.Printf("The total negative aggression count is: %d", calculatedAgg["total"])
+
 	} else if *messageFrequency {
+
 		dates := wanalyzer.GetDatesFromLines(lines)
 		frequence := wanalyzer.GetMessageFrequency(lines, dates)
 
-		wanalyzer.DrawFrequence(frequence, *username+" mf.png")
+		if *printFrequency {
+			frequence = wanalyzer.SortFrequency(frequence)
+			wanalyzer.PrintFrequence(frequence, *start, *limit)
+		} else {
+			drawer := wanalyzer.NewGraph(*username + " mf.png")
+			drawer.DrawFrequence(frequence)
+
+			fmt.Println("Graph of messaging frequency is created.")
+		}
+
 	} else if len(*file) > 0 {
+
 		words := wanalyzer.GetWordsWithOrder(lines)
 		wanalyzer.PrintWords(words, *start, *limit)
 	}
