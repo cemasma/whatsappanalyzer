@@ -29,11 +29,15 @@ func main() {
 	negativesFile := flag.String("negatives", "", "If you want to measure aggression use it.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --negatives \"C:\\negativewords.txt\" ")
 
-	messageFrequency := flag.Bool("messagef", false, "It measure the talking frequency in date by date."+
+	messageFrequency := flag.Bool("messagef", false, "It measure the messaging frequency in date by date.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef")
+
+	timeFrequency := flag.Bool("timef", false, "It measure messaging frequency in time periods.\n"+
+		"\tExample: analyzer --file --file \"C:\\filename.txt\" --timef")
 
 	printFrequency := flag.Bool("printf", false, "It sorts frequency by activity and prints."+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef --printf")
+
 	flag.Parse()
 
 	var lines []string
@@ -79,9 +83,20 @@ func main() {
 			drawer := wanalyzer.NewGraph(*username + " mf.png")
 			drawer.DrawFrequence(frequence)
 
-			fmt.Println("Graph of messaging frequency is created.")
+			fmt.Println("Graph of messaging frequency was created.")
 		}
 
+	} else if *timeFrequency {
+		timeFrequences := wanalyzer.GetTimeFrequency(lines)
+
+		if *printFrequency {
+			wanalyzer.PrintTimeFrequence(timeFrequences)
+		} else {
+			drawer := wanalyzer.NewGraph("timefrequences.png")
+			drawer.DrawTimeFrequence(timeFrequences)
+
+			fmt.Println("Graph of messaging frequency in time periods was created.")
+		}
 	} else if len(*file) > 0 {
 
 		words := wanalyzer.GetWordsWithOrder(lines)

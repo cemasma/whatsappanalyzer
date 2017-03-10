@@ -68,3 +68,9 @@ func GetTimeFrequency(lines []string) (timeFrequence map[string]int) {
 
 	return
 }
+
+func PrintTimeFrequence(frequence map[string]int) {
+	for key, value := range frequence {
+		fmt.Printf("%s message count: %d\n", key, value)
+	}
+}

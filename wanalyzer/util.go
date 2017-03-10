@@ -113,11 +113,14 @@ func getHourTime(hour int) string {
 
 func getHourInLine(line string) int {
 	if len(line) >= 16 {
-		hour, err := strconv.Atoi(regexp.MustCompile("(, )(.*)(.*:.. -)").FindString(line)[2:4])
-		if err != nil {
-			return 25
+		findedStr := regexp.MustCompile("(, )(.*)(.*:.. -)").FindString(line)
+		if len(findedStr) == 9 {
+			hour, err := strconv.Atoi(findedStr[2:4])
+			if err != nil {
+				return 25
+			}
+			return hour
 		}
-		return hour
 	}
 	return 25
 }

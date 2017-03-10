@@ -32,9 +32,44 @@ func (dr Drawer) DrawFrequence(frequence []MessageFrequence) {
 		context.Fill()
 	}
 
-	context.Rotate(90)
 	context.SavePNG(dr.ImageName)
+}
 
+func (dr Drawer) DrawTimeFrequence(frequence map[string]int) {
+	sizeVariables := getTimeFrequenceSizeVariables(frequence)
+	width, height := sizeVariables[0]*100+70, (sizeVariables[1]/10)+100
+
+	context := gg.NewContext(width, height)
+
+	context.SetHexColor("#e6fae6")
+	context.DrawRectangle(0, 0, float64(width), float64(height))
+	context.Fill()
+
+	i := 0
+	context.SetHexColor("#353734")
+	for key, value := range frequence {
+		context.DrawRectangle(100*float64(i+1), float64((height)-50-(value/10)), 35, float64(value/10))
+		context.DrawString(key, (100*float64(i+1))-5, float64(height-25))
+		context.DrawString(strconv.Itoa(value), (100 * float64(i+1)), float64(height-50-(value/10)-10))
+
+		context.Fill()
+		i++
+	}
+
+	context.SavePNG(dr.ImageName)
+}
+
+func getTimeFrequenceSizeVariables(frequence map[string]int) []int {
+	wVar, maxVal := 0, 0
+	for _, value := range frequence {
+		if value > 0 {
+			wVar++
+		}
+		if value > maxVal {
+			maxVal = value
+		}
+	}
+	return []int{wVar, maxVal}
 }
 
 func (dr Drawer) getHeight(frequence []MessageFrequence) (max int) {
