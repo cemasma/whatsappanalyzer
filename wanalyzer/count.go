@@ -31,7 +31,7 @@ func SortWordsByCount(pureWords []string) []Word {
 
 	for count, wordArr := range wordCountMap {
 		for _, word := range wordArr {
-			if isNotIgnored(word) {
+			if isItIgnored(word) {
 				words = append(words, Word{Content: word, Value: count})
 			}
 		}
@@ -50,7 +50,7 @@ func SortWordsByCount(pureWords []string) []Word {
 	return words
 }
 
-func GetMessageCount(lines []string, date string) (count int) {
+func getMessageCount(lines []string, date string) (count int) {
 	for _, line := range lines {
 		if (len(date) == 10 && len(line) > 9 && line[:10] == date) || (len(date) == 9 && len(line) > 8 && line[:9] == date) {
 			count++

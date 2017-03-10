@@ -22,7 +22,7 @@ func SortFrequency(frequence []MessageFrequence) []MessageFrequence {
 
 func GetMessageFrequency(lines, dates []string) (frequency []MessageFrequence) {
 	for _, date := range dates {
-		count := GetMessageCount(lines, date)
+		count := getMessageCount(lines, date)
 		frequency = append(frequency, MessageFrequence{Date: date, Count: count})
 	}
 

@@ -29,9 +29,9 @@ Open your command line in directory where you was build the program. Now you are
 |-----------|----------------------------------------------------------------------------|
 | file      | For read the chat record you must send the file address with that command. |
 | username  | You can make querying by username in Whatsapp chat.                        |
-| limit     | You can see more list elements in console.                                 |
-| start     | When printing lists you can change the starting index.                     |
-| word      | For find the count of specific word or sentence.                           |
+| limit     | You can limit the list from start to sended value.                         |
+| start     | It sets starting index of list to sended value.                            |
+| word      | Finds the count of specific word or sentence.                              |
 | negatives | You can observe the aggression with identifying some aggressive words.     |
 | messagef  | It provides a graph for observe messaging frequency.                       |
 | printf    | It sorts message frequency by activity and prints.                         |
@@ -48,7 +48,7 @@ For find most used words for specific person;
 ./analyzer --file "C:\chatrecord.txt" --username "Cem Asma"
 ```
 
-If you does not send limit, program sets it defaultly 10. For see more or less words;
+If you do not send limit, program sets it defaultly 10. For see more or less words;
 ```sh
 ./analyzer --file "C:\chatrecord.txt" --limit 20
 ```

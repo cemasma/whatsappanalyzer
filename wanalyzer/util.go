@@ -22,17 +22,6 @@ func Read(fileAddress string) string {
 	return string(byt)
 }
 
-func GetWordsWithOrder(lines []string) []Word {
-	words := SeparateWords(lines)
-	return SortWordsByCount(words)
-}
-
-func PrintWords(words []Word, start, limit int) {
-	for i := start; i < limit; i++ {
-		fmt.Printf("%d.\t %s\t\t\t\t\tCount: %d\n", i+1, words[i].Content, words[i].Value)
-	}
-}
-
 func GetLines(chatRecord string) []string {
 	return strings.Split(chatRecord, "\n")
 }
@@ -57,6 +46,34 @@ func GetUsernames(lines []string) (usernames []string) {
 	return
 }
 
+func SeparateWords(lines []string) []string {
+	words := []string{}
+	for _, value := range lines {
+		sentence := strings.Split(value, ":")
+		if len(sentence) > 2 {
+			wordArr := strings.Split(sentence[2], " ")
+			for _, word := range wordArr {
+				if word != " " && len(word) > 0 {
+					words = append(words, word)
+				}
+			}
+		}
+	}
+
+	return words
+}
+
+func GetWordsWithOrder(lines []string) []Word {
+	words := SeparateWords(lines)
+	return SortWordsByCount(words)
+}
+
+func PrintWords(words []Word, start, limit int) {
+	for i := start; i < limit; i++ {
+		fmt.Printf("%d.\t %s\t\t\t\t\tCount: %d\n", i+1, words[i].Content, words[i].Value)
+	}
+}
+
 func Contains(arr []string, elem string) bool {
 	for _, val := range arr {
 		if val == elem {
@@ -66,20 +83,7 @@ func Contains(arr []string, elem string) bool {
 	return false
 }
 
-func SeparateWords(lines []string) []string {
-	words := []string{}
-	for _, value := range lines {
-		sentence := strings.Split(value, ":")
-		if len(sentence) > 2 {
-			wordArr := strings.Split(sentence[2], " ")
-			words = append(words, wordArr...)
-		}
-	}
-
-	return words
-}
-
-func isNotIgnored(word string) bool {
+func isItIgnored(word string) bool {
 	for _, value := range getIgnoredWords() {
 		if word == value {
 			return false

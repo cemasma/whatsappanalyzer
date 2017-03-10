@@ -36,7 +36,11 @@ func main() {
 		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef --printf")
 	flag.Parse()
 
-	lines := wanalyzer.GetLines(wanalyzer.Read(*file))
+	var lines []string
+
+	if len(*file) > 0 {
+		lines = wanalyzer.GetLines(wanalyzer.Read(*file))
+	}
 
 	if len(*username) > 0 {
 		lines = wanalyzer.GetUserLines(lines, *username)
