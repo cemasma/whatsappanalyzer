@@ -74,7 +74,7 @@ func main() {
 
 		if *printFrequency {
 			frequence = wanalyzer.SortFrequency(frequence)
-			wanalyzer.PrintFrequence(frequence, *start, *limit)
+			wanalyzer.PrintMessageFrequence(frequence, *start, *limit)
 		} else {
 			drawer := wanalyzer.NewGraph(*username + " mf.png")
 			drawer.DrawFrequence(frequence)

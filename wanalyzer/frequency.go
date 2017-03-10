@@ -44,8 +44,27 @@ func GetDatesFromLines(lines []string) (dates []string) {
 	return
 }
 
-func PrintFrequence(frequence []MessageFrequence, start, end int) {
+func PrintMessageFrequence(frequence []MessageFrequence, start, end int) {
 	for i := start; i < end; i++ {
 		fmt.Printf("%d. %s \t %d\n", i+1, frequence[i].Date, frequence[i].Count)
 	}
+}
+
+func GetTimeFrequency(lines []string) (timeFrequence map[string]int) {
+	timeFrequence = map[string]int{
+		"Morning":   0,
+		"Noon":      0,
+		"Afternoon": 0,
+		"Evening":   0,
+		"Night":     0,
+	}
+
+	for _, line := range lines {
+		hourTime := getHourTime(getHourInLine(line))
+		if _, ok := timeFrequence[hourTime]; ok {
+			timeFrequence[hourTime]++
+		}
+	}
+
+	return
 }

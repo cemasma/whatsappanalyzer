@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -11,6 +12,18 @@ type Word struct {
 	Content string
 	Value   int
 }
+
+type time struct {
+	Name  string
+	Start int
+	End   int
+}
+
+var morning = time{Name: "Morning", Start: 6, End: 12}
+var noon = time{Name: "Noon", Start: 12, End: 16}
+var afternoon = time{Name: "Afternoon", Start: 16, End: 20}
+var evening = time{Name: "Evening", Start: 20, End: 24}
+var night = time{Name: "Night", Start: 24, End: 6}
 
 func Read(fileAddress string) string {
 	byt, err := ioutil.ReadFile(fileAddress)
@@ -81,6 +94,32 @@ func Contains(arr []string, elem string) bool {
 		}
 	}
 	return false
+}
+
+func getHourTime(hour int) string {
+	if hour >= morning.Start && hour <= morning.End {
+		return morning.Name
+	} else if hour >= noon.Start && hour <= noon.End {
+		return noon.Name
+	} else if hour >= afternoon.Start && hour <= afternoon.End {
+		return afternoon.Name
+	} else if hour >= evening.Start && hour <= evening.End {
+		return evening.Name
+	} else if hour <= night.Start && hour <= night.End {
+		return night.Name
+	}
+	return "time not found"
+}
+
+func getHourInLine(line string) int {
+	if len(line) >= 16 {
+		hour, err := strconv.Atoi(regexp.MustCompile("(, )(.*)(.*:.. -)").FindString(line)[2:4])
+		if err != nil {
+			return 25
+		}
+		return hour
+	}
+	return 25
 }
 
 func isItIgnored(word string) bool {

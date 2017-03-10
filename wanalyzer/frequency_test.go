@@ -95,3 +95,37 @@ func TestGetDatesFromLines(t *testing.T) {
 		}
 	}
 }
+
+func TestGetTimeFrequency(t *testing.T) {
+	type args struct {
+		lines []string
+	}
+	tests := []struct {
+		name              string
+		args              args
+		wantTimeFrequence map[string]int
+	}{
+		{
+			name: "TestGetTimeFrequency",
+			args: args{
+				lines: []string{
+					"19.02.2017, 17:49 - Cem Asma: test",
+					"9.02.2017, 04:49 - Cem Asma: test",
+					"9.02.2017, ..:49 - Cem Asma: test",
+				},
+			},
+			wantTimeFrequence: map[string]int{
+				"Morning":   0,
+				"Noon":      0,
+				"Afternoon": 1,
+				"Evening":   0,
+				"Night":     1,
+			},
+		},
+	}
+	for _, tt := range tests {
+		if gotTimeFrequence := GetTimeFrequency(tt.args.lines); !reflect.DeepEqual(gotTimeFrequence, tt.wantTimeFrequence) {
+			t.Errorf("%q. GetTimeFrequency() = %v, want %v", tt.name, gotTimeFrequence, tt.wantTimeFrequence)
+		}
+	}
+}

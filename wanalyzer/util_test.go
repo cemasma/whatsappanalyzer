@@ -243,3 +243,86 @@ func Test_makeValuesAsKey(t *testing.T) {
 		}
 	}
 }
+
+func Test_getHourTime(t *testing.T) {
+	type args struct {
+		hour int
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "TestGetHourTime",
+			args: args{
+				13,
+			},
+			want: "Noon",
+		},
+		{
+			name: "TestGetHourTime",
+			args: args{
+				4,
+			},
+			want: "Night",
+		},
+		{
+			name: "TestGetHourTime",
+			args: args{
+				21,
+			},
+			want: "Evening",
+		},
+		{
+			name: "TestGetHourTime",
+			args: args{
+				99,
+			},
+			want: "time not found",
+		},
+	}
+	for _, tt := range tests {
+		if got := getHourTime(tt.args.hour); got != tt.want {
+			t.Errorf("%q. GetHourTime() = %v, want %v", tt.name, got, tt.want)
+		}
+	}
+}
+
+func Test_getHourInLine(t *testing.T) {
+	type args struct {
+		line string
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "Test_getHourInLine",
+			args: args{
+				line: "19.02.2017, 17:49 - Cem Asma: test",
+			},
+			want: 17,
+		},
+		{
+			name: "Test_getHourInLine",
+			args: args{
+				line: "9.02.2017, 04:49 - Cem Asma: test",
+			},
+			want: 4,
+		},
+		{
+			name: "Test_getHourInLine",
+			args: args{
+				line: "9.02.2017, ..:49 - Cem Asma: test",
+			},
+			want: 25,
+		},
+	}
+	for _, tt := range tests {
+		if got := getHourInLine(tt.args.line); got != tt.want {
+			t.Errorf("%q. getHourInLine() = %v, want %v", tt.name, got, tt.want)
+		}
+	}
+}
