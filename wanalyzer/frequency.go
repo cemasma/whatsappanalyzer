@@ -2,11 +2,13 @@ package wanalyzer
 
 import "fmt"
 
+// MessageFrequence a struct for storing message count per day
 type MessageFrequence struct {
 	Date  string
 	Count int
 }
 
+// SortFrequency sorts the frequency array by message count
 func SortFrequency(frequence []MessageFrequence) []MessageFrequence {
 	for i := 0; i < len(frequence); i++ {
 		for k := i + 1; k < len(frequence); k++ {
@@ -20,6 +22,7 @@ func SortFrequency(frequence []MessageFrequence) []MessageFrequence {
 	return frequence
 }
 
+// GetMessageFrequency provides messages' frequencies
 func GetMessageFrequency(lines, dates []string) (frequency []MessageFrequence) {
 	for _, date := range dates {
 		count := getMessageCount(lines, date)
@@ -29,6 +32,7 @@ func GetMessageFrequency(lines, dates []string) (frequency []MessageFrequence) {
 	return frequency
 }
 
+// GetDatesFromLines separates the dates from lines and returns these in array
 func GetDatesFromLines(lines []string) (dates []string) {
 	for _, line := range lines {
 		if len(line) > 10 && (string(line[2]) == "." && string(line[5]) == "." && string(line[10]) == ",") &&
@@ -44,12 +48,14 @@ func GetDatesFromLines(lines []string) (dates []string) {
 	return
 }
 
+// PrintMessageFrequence prints the frequencies
 func PrintMessageFrequence(frequence []MessageFrequence, start, end int) {
 	for i := start; i < end; i++ {
 		fmt.Printf("%d. %s \t %d\n", i+1, frequence[i].Date, frequence[i].Count)
 	}
 }
 
+// GetTimeFrequency prepares and provides messaging frequency by time periods
 func GetTimeFrequency(lines []string) (timeFrequence map[string]int) {
 	timeFrequence = map[string]int{
 		"Morning":   0,
@@ -69,6 +75,7 @@ func GetTimeFrequency(lines []string) (timeFrequence map[string]int) {
 	return
 }
 
+// PrintTimeFrequence prints the frequencies
 func PrintTimeFrequence(frequence map[string]int) {
 	for key, value := range frequence {
 		fmt.Printf("%s message count: %d\n", key, value)

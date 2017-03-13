@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// CountWordInLines counts the word or sentence in the lines
 func CountWordInLines(word string, lines []string) (count int) {
 	if strings.Index(word, " ") > -1 {
 		for _, value := range lines {
@@ -25,6 +26,7 @@ func CountWordInLines(word string, lines []string) (count int) {
 	return
 }
 
+// SortWordsByCount sorts the separated words from most used to least used.
 func SortWordsByCount(pureWords []string) []Word {
 	words := []Word{}
 	wordCountMap := makeValuesAsKey(countWords(pureWords))

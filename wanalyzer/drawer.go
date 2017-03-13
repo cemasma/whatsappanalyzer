@@ -6,15 +6,17 @@ import (
 	"github.com/fogleman/gg"
 )
 
+// Drawer struct for drawing
 type Drawer struct {
 	ImageName string
-	Frequence []MessageFrequence
 }
 
+// NewGraph creates a Drawer
 func NewGraph(imageName string) Drawer {
 	return Drawer{ImageName: imageName}
 }
 
+// DrawFrequence draws a graph of the messaging frequence
 func (dr Drawer) DrawFrequence(frequence []MessageFrequence) {
 	width, height := len(frequence)*100+70, (dr.getHeight(frequence)/10)+100
 	context := gg.NewContext(width, height)
@@ -35,6 +37,7 @@ func (dr Drawer) DrawFrequence(frequence []MessageFrequence) {
 	context.SavePNG(dr.ImageName)
 }
 
+// DrawTimeFrequence draws a graph of messaging frequence by time periods
 func (dr Drawer) DrawTimeFrequence(frequence map[string]int) {
 	sizeVariables := getTimeFrequenceSizeVariables(frequence)
 	width, height := sizeVariables[0]*100+70, (sizeVariables[1]/10)+100

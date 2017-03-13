@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// Word a struct, contains use count information
 type Word struct {
 	Content string
 	Value   int
@@ -25,6 +26,7 @@ var afternoon = time{Name: "Afternoon", Start: 16, End: 20}
 var evening = time{Name: "Evening", Start: 20, End: 24}
 var night = time{Name: "Night", Start: 24, End: 6}
 
+// Read reads file and returns as string
 func Read(fileAddress string) string {
 	byt, err := ioutil.ReadFile(fileAddress)
 
@@ -35,10 +37,12 @@ func Read(fileAddress string) string {
 	return string(byt)
 }
 
+// GetLines returns chat record's lines in an array
 func GetLines(chatRecord string) []string {
 	return strings.Split(chatRecord, "\n")
 }
 
+// GetUserLines filters the lines by username
 func GetUserLines(lines []string, username string) (specifiedLines []string) {
 	for _, value := range lines {
 		if strings.Index(value, username) > -1 {
@@ -49,6 +53,7 @@ func GetUserLines(lines []string, username string) (specifiedLines []string) {
 	return specifiedLines
 }
 
+// GetUsernames finds the usernames in lines and returns
 func GetUsernames(lines []string) (usernames []string) {
 	for _, line := range lines {
 		value := regexp.MustCompile(`- .*?:`).FindString(line)
@@ -59,6 +64,7 @@ func GetUsernames(lines []string) (usernames []string) {
 	return
 }
 
+// SeparateWords parses the words from the lines and returns these in an array
 func SeparateWords(lines []string) []string {
 	words := []string{}
 	for _, value := range lines {
@@ -76,17 +82,20 @@ func SeparateWords(lines []string) []string {
 	return words
 }
 
+// GetWordsWithOrder returns sorted Word array by lines
 func GetWordsWithOrder(lines []string) []Word {
 	words := SeparateWords(lines)
 	return SortWordsByCount(words)
 }
 
+// PrintWords prints the word array
 func PrintWords(words []Word, start, limit int) {
 	for i := start; i < limit; i++ {
 		fmt.Printf("%d.\t %s\t\t\t\t\tCount: %d\n", i+1, words[i].Content, words[i].Value)
 	}
 }
 
+// Contains controls the array that is contains the array
 func Contains(arr []string, elem string) bool {
 	for _, val := range arr {
 		if val == elem {

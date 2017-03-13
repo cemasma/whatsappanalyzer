@@ -23,27 +23,28 @@ go build -o analyzer.exe main.go
 You must send the chat record without media to your email from Whatsapp. After export, download the chat record from your email.
 <br>For this: https://www.whatsapp.com/faq/en/android/23756533
 
-Open your command line in directory where you was build the program. Now you are ready to use these commands.
+Open your command line in directory which you was builded the program. Now you are ready to use these commands.
 
 | Commands  | Description                                                                |
 |-----------|----------------------------------------------------------------------------|
-| file      | For read the chat record you must send the file address with that command. |
+| file      | For read the chat record you must send the file address with this command. |
 | username  | You can make querying by username in Whatsapp chat.                        |
 | limit     | You can limit the list from start to sended value.                         |
 | start     | It sets starting index of list to sended value.                            |
 | word      | Finds the count of specific word or sentence.                              |
 | negatives | You can observe the aggression with identifying some aggressive words.     |
 | messagef  | It provides a graph for observe messaging frequency.                       |
+| timef     | It provides a graph for observe messaging frequency in time periods.       |
 | printf    | It sorts message frequency by activity and prints.                         |
 
 
 # Examples
-For find most used words in general;
+For find the most used words in general;
 ```sh
 ./analyzer --file "C:\chatrecord.txt"
 ```
 
-For find most used words for specific person;
+For find the most used words for specific person;
 ```sh
 ./analyzer --file "C:\chatrecord.txt" --username "Cem Asma"
 ```
@@ -78,14 +79,14 @@ For find the count of specific word or sentence;
 
 If you send the negative words in a file via file address you can measure the aggression by these words.
 
-That file's content must be like this;
+This file's content must be like this;
 ```
 fuck you
 fuck
 shit
 ```
 
-After creation that file you can use it like this;
+After creation this file you can use it like this;
 ```sh
 ./analyzer --file "C:\chatrecord.txt" --negatives "C:\negatives.txt"
 ```

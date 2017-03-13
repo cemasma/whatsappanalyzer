@@ -1,5 +1,6 @@
 package wanalyzer
 
+// CalculateAggression calculates aggression by use counts of negative words
 func CalculateAggression(lines, negatives []string) map[string]int {
 	usernames := GetUsernames(lines)
 
@@ -13,6 +14,7 @@ func CalculateAggression(lines, negatives []string) map[string]int {
 	return aggression
 }
 
+// AggressionCount collect points for every negative word
 func AggressionCount(lines, negatives []string) (aggression int) {
 	for _, word := range negatives {
 		aggression += CountWordInLines(word, lines)
