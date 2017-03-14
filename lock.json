@@ -1,0 +1,32 @@
+{
+    "memo": "",
+    "projects": [
+        {
+            "name": "github.com/fogleman/gg",
+            "branch": "master",
+            "revision": "6166aa3c1afaee416f384645a81636267aee6d25",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/golang/freetype",
+            "branch": "master",
+            "revision": "d9be45aaf7452cc30c0ceb1b1bf7efe1d17b7c87",
+            "packages": [
+                "raster",
+                "truetype"
+            ]
+        },
+        {
+            "name": "golang.org/x/image",
+            "branch": "master",
+            "revision": "e6cbe778da3cea914ea6436d0f99309605c3dfc4",
+            "packages": [
+                "math/fixed",
+                "font",
+                "font/basicfont"
+            ]
+        }
+    ]
+}
