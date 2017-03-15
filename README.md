@@ -52,78 +52,79 @@ analyzer --help
 
 
 ## Examples
-For find the most used words in general;
-```sh
-analyzer --file "C:\chatrecord.txt"
-```
 
-For find the most used words for specific person;
-```sh
-analyzer --file "C:\chatrecord.txt" --username "Cem Asma"
-```
+* For find the most used words in general.
+    ```sh
+    analyzer --file "C:\chatrecord.txt"
+    ```
 
-If you do not send limit, program sets it defaultly 10. For see more or less words;
-```sh
-analyzer --file "C:\chatrecord.txt" --limit 20
-```
+* For find the most used words for specific person.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --username "Cem Asma"
+    ```
 
-```sh
-analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --limit 20
-```
+* If you do not send limit, program sets it defaultly 10. For see more or less words.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --limit 20
+    ```
 
-For set the starting index;
-```sh
-analyzer --file "C:\chatrecord.txt" --start 10
-```
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --limit 20
+    ```
 
-You can combine start and limit;
-```sh
-analyzer --file "C:\chatrecord.txt" --start 10 --limit 20
-```
+* For set the starting index.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --start 10
+    ```
 
-For find the count of specific word or sentence;
-```sh
-analyzer --file "C:\chatrecord.txt" --word "test"
-```
+* You can combine start and limit.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --start 10 --limit 20
+    ```
 
-```sh
-analyzer --file "C:\chatrecord.txt" --word "hello world"
-```
+* For find the count of specific word or sentence.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --word "test"
+    ```
 
-If you send the negative words in a file via file address you can measure the aggression by these words.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --word "hello world"
+    ```
 
-This file's content must be like this;
-```
-fuck you
-fuck
-shit
-```
+* If you send the negative words in a file via file address you can measure the aggression by these words.
 
-After creation this file you can use it like this;
-```sh
-analyzer --file "C:\chatrecord.txt" --negatives "C:\negatives.txt"
-```
+    This file's content must be like this;
+    ```
+    fuck you
+    fuck
+    shit
+    ```
 
-It counts your messages in day  by day and draws a graphs. It saves the graph image on where you are. With that you can observe messaging frequency;
-```sh
-analyzer --file "C:\chatrecord.txt" --messagef
-```
+    After creation this file you can use it like this;
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --negatives "C:\negatives.txt"
+    ```
 
-```sh
-analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --messagef
-```
+* It counts your messages in day  by day and draws a graphs. It saves the graph image on where you are. With that you can observe messaging frequency.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --messagef
+    ```
 
-It sorts message frequency by message counts and prints.
-```sh
-analyzer --file "C:\chatrecord.txt" --messagef --printf
-```
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --messagef
+    ```
 
-It provides a graph for observe messaging frequency in time periods.
-```sh
-analyzer --file "C:\chatrecord.txt" --timef
-```
+* It sorts message frequency by message counts and prints.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --messagef --printf
+    ```
 
-It prints the values of messaging frequency by time periods.
-```sh
-analyzer --file "C:\chatrecord.txt" --timef --printf
-```
+* It provides a graph for observe messaging frequency in time periods.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --timef
+    ```
+
+* It prints the values of messaging frequency by time periods.
+    ```sh
+    analyzer --file "C:\chatrecord.txt" --timef --printf
+    ```
