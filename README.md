@@ -48,7 +48,7 @@ analyzer --help
 | negatives | You can observe the aggression with identifying some aggressive words.     |
 | messagef  | It provides a graph for observe messaging frequency.                       |
 | timef     | It provides a graph for observe messaging frequency in time periods.       |
-| printf    | While with <div style="color:orange;display:inline;">messagef</div> it sorts messaging frequency by activity and prints. While with <div style="color:orange;display:inline;">timef</div> it prints messaging frequency in time periods.|
+| printf    | While with messagef it sorts messaging frequency by activity and prints. While with timef it prints messaging frequency in time periods.|
 
 
 ## Examples
