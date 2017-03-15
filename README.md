@@ -1,11 +1,13 @@
 # whatsapp-analyzer
 
-It helps to analyze your Whatsapp chat records with making parse on chat texts. As example you can measure the aggression, you can see the words in order of use and you can see the frequency of messaging.
+It helps to analyze your Whatsapp chat records with making parse on records. As example you can measure the aggression, you can see the words in order of use and you can see the frequency of messaging.
 
 
 # Getting Started
 
-1. First download the app which is available for your operating system from here; https://drive.google.com/open?id=0B2ClpaG8PdV6WHNjZ0pLVmhaTVU
+1. First download the app which is available for your operating system from here:
+
+    https://drive.google.com/open?id=0B2ClpaG8PdV6WHNjZ0pLVmhaTVU
 
 2. After, add the folder of app to your PATH.
 
@@ -14,7 +16,7 @@ It helps to analyze your Whatsapp chat records with making parse on chat texts. 
     export PATH = "$PATH:$HOME/folderofapp"
     ```
 
-    For Windows follow these instructions:
+    Follow these instructions for Windows:
     1. From the desktop, right click the Computer icon.
     2. Choose Properties from the context menu.
     3. Click the Advanced system settings link.
@@ -29,10 +31,15 @@ It helps to analyze your Whatsapp chat records with making parse on chat texts. 
 
 # Usage
 
-Open your command line in directory which you was installed the program. Now you are ready to use these commands.
+After those steps you are ready to use the app in console. I suggest the help command for the first opening.
+
+```sh
+analyzer --help
+```
 
 | Commands  | Description                                                                |
 |-----------|----------------------------------------------------------------------------|
+| help      | It shows all the command with their abilities.                             |
 | file      | For read the chat record you must send the file address with this command. While alone it returns a list of most used words.                                                                 |
 | username  | You can make querying by username in Whatsapp chat.                        |
 | limit     | You can limit the list from start to sended value.                         |
@@ -44,7 +51,7 @@ Open your command line in directory which you was installed the program. Now you
 | printf    | While with <div style="color:orange;display:inline;">messagef</div> it sorts messaging frequency by activity and prints. While with <div style="color:orange;display:inline;">timef</div> it prints messaging frequency in time periods.|
 
 
-# Examples
+## Examples
 For find the most used words in general;
 ```sh
 analyzer --file "C:\chatrecord.txt"

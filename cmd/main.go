@@ -23,7 +23,7 @@ func main() {
 		"\tExample: analyzer --file \"C:\\filename.txt\" --start 10")
 
 	word := flag.String("word", "", "If you want to see information about the specific word use it.\n"+
-		"\tLetters of the word must be lower."+
+		"\tLetters of the word must be lower.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --word \"test\"")
 
 	negativesFile := flag.String("negatives", "", "If you want to measure aggression use it.\n"+
@@ -35,7 +35,7 @@ func main() {
 	timeFrequency := flag.Bool("timef", false, "It measure messaging frequency in time periods.\n"+
 		"\tExample: analyzer --file --file \"C:\\filename.txt\" --timef")
 
-	printFrequency := flag.Bool("printf", false, "It sorts frequency by activity and prints."+
+	printFrequency := flag.Bool("printf", false, "It sorts frequency by activity and prints.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef --printf")
 
 	flag.Parse()
