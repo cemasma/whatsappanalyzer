@@ -39,7 +39,7 @@ analyzer --help
 
 | Commands  | Description                                                                |
 |-----------|----------------------------------------------------------------------------|
-| help      | It shows all the command with their abilities.                             |
+| help      | It shows all the commands with their abilities.                            |
 | file      | For read the chat record you must send the file address with this command. While alone it returns a list of most used words.                                                                 |
 | username  | You can make querying by username in Whatsapp chat.                        |
 | limit     | You can limit the list from start to sended value.                         |
