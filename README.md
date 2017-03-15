@@ -5,24 +5,29 @@ It helps to analyze your Whatsapp chat records with making parse on chat texts. 
 
 # Getting Started
 
-First download the app which is available for your operating system from here; https://drive.google.com/open?id=0B2ClpaG8PdV6WHNjZ0pLVmhaTVU
+1. First download the app which is available for your operating system from here; https://drive.google.com/open?id=0B2ClpaG8PdV6WHNjZ0pLVmhaTVU
 
-After, add the folder of app to your PATH.
+2. After, add the folder of app to your PATH.
 
-Example for OSX & Ubuntu
-```sh
-set PATH = "$PATH:$HOME/whatsappanalyzer"
-```
+    In OSX or any of Linux you can do it in terminal with this command:
+    ```sh
+    export PATH = "$PATH:$HOME/folderofapp"
+    ```
 
-Example for Windows
-```sh
-set PATH = %PATH%;C:\Users\exampleuser\whatsappanalyzer
-```
+    For Windows follow these instructions:
+    1. From the desktop, right click the Computer icon.
+    2. Choose Properties from the context menu.
+    3. Click the Advanced system settings link.
+    4. Click Environment Variables. In the section System Variables, find the PATH environment variable and select it.
+    5. Click Edit. If the PATH environment variable does not exist, click New.
+    6. In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
+
+<br>
+
+3. You must send the chat record without media to your email from Whatsapp. After export, download the chat record from your email.
+<br>For this: https://www.whatsapp.com/faq/en/android/23756533
 
 # Usage
-
-You must send the chat record without media to your email from Whatsapp. After export, download the chat record from your email.
-<br>For this: https://www.whatsapp.com/faq/en/android/23756533
 
 Open your command line in directory which you was installed the program. Now you are ready to use these commands.
 

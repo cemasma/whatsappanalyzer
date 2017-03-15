@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"./wanalyzer"
+	"whatsappanalyzer/wanalyzer"
 )
 
 func main() {

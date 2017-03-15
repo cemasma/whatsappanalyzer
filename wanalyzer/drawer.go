@@ -20,6 +20,7 @@ func NewGraph(imageName string) Drawer {
 func (dr Drawer) DrawFrequence(frequence []MessageFrequence) {
 	width, height := len(frequence)*100+70, (dr.getHeight(frequence)/10)+100
 	context := gg.NewContext(width, height)
+	defer context.SavePNG(dr.ImageName)
 
 	context.SetHexColor("#e6fae6")
 	context.DrawRectangle(0, 0, float64(width), float64(height))
@@ -33,8 +34,6 @@ func (dr Drawer) DrawFrequence(frequence []MessageFrequence) {
 
 		context.Fill()
 	}
-
-	context.SavePNG(dr.ImageName)
 }
 
 // DrawTimeFrequence draws a graph of messaging frequence by time periods
@@ -43,6 +42,7 @@ func (dr Drawer) DrawTimeFrequence(frequence map[string]int) {
 	width, height := sizeVariables[0]*100+70, (sizeVariables[1]/10)+100
 
 	context := gg.NewContext(width, height)
+	defer context.SavePNG(dr.ImageName)
 
 	context.SetHexColor("#e6fae6")
 	context.DrawRectangle(0, 0, float64(width), float64(height))
@@ -58,8 +58,6 @@ func (dr Drawer) DrawTimeFrequence(frequence map[string]int) {
 		context.Fill()
 		i++
 	}
-
-	context.SavePNG(dr.ImageName)
 }
 
 func getTimeFrequenceSizeVariables(frequence map[string]int) []int {
