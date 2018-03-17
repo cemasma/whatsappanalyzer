@@ -5,9 +5,9 @@ It helps to analyze your Whatsapp chat records with making parse on records. As 
 
 # Getting Started
 
-1. First build the project yourself or download the app which is available for your operating system from here:
+1. First build the project by yourself or download the app which is available for your operating system from releases:
 
-    https://drive.google.com/open?id=0B2ClpaG8PdV6WHNjZ0pLVmhaTVU
+    https://github.com/cemasma/whatsappanalyzer/releases/latest
 
 2. After, add the folder of app to your PATH.
 
