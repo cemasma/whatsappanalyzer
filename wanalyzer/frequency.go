@@ -35,14 +35,27 @@ func GetMessageFrequency(lines, dates []string) (frequency []MessageFrequence) {
 // GetDatesFromLines separates the dates from lines and returns these in array
 func GetDatesFromLines(lines []string) (dates []string) {
 	for _, line := range lines {
-		if len(line) > 10 && (string(line[2]) == "." && string(line[5]) == "." && string(line[10]) == ",") &&
-			string(line[14]) == ":" && !Contains(dates, string(line[:10])) {
 
-			dates = append(dates, line[:10])
-		} else if len(line) > 9 && string(line[1]) == "." && string(line[4]) == "." && string(line[9]) == "," &&
-			string(line[13]) == ":" && !Contains(dates, string(line[:9])) {
+		if len(line) > 10 {
+			if (string(line[2]) == "." && string(line[5]) == "." && string(line[10]) == ",") &&
+				string(line[14]) == ":" && !Contains(dates, string(line[:10])) {
 
-			dates = append(dates, line[:9])
+				dates = append(dates, line[:10])
+			} else if (string(line[2]) == " " && string(line[5]) == " " && string(line[10]) == ",") &&
+				string(line[14]) == ":" && !Contains(dates, string(line[:10])) {
+
+				dates = append(dates, line[:10])
+			}
+		} else if len(line) > 9 {
+			if string(line[1]) == "." && string(line[4]) == "." && string(line[9]) == "," &&
+				string(line[13]) == ":" && !Contains(dates, string(line[:9])) {
+
+				dates = append(dates, line[:9])
+			} else if string(line[1]) == " " && string(line[4]) == " " && string(line[9]) == "," &&
+				string(line[13]) == ":" && !Contains(dates, string(line[:9])) {
+
+				dates = append(dates, line[:9])
+			}
 		}
 	}
 	return
