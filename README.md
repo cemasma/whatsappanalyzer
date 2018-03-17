@@ -5,7 +5,7 @@ It helps to analyze your Whatsapp chat records with making parse on records. As 
 
 # Getting Started
 
-1. First download the app which is available for your operating system from here:
+1. First build the project yourself or download the app which is available for your operating system from here:
 
     https://drive.google.com/open?id=0B2ClpaG8PdV6WHNjZ0pLVmhaTVU
 
@@ -28,6 +28,22 @@ It helps to analyze your Whatsapp chat records with making parse on records. As 
 
 3. You must send the chat record without media to your email from Whatsapp. After export, download the chat record from your email.
 <br>For this: https://www.whatsapp.com/faq/en/android/23756533
+
+# Build Project
+1. Download the project. 
+```sh 
+git clone https://github.com/cemasma/whatsappanalyzer
+```
+
+2. Get the dependencies using by dep.
+```sh 
+dep ensure
+ ```
+
+3. And you are ready to build.
+```sh
+go build cmd/main.go
+```
 
 # Usage
 
