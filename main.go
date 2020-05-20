@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"strings"
 
 	"whatsappanalyzer/wanalyzer"
 )
@@ -26,8 +25,8 @@ func main() {
 		"\tLetters of the word must be lower.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --word \"test\"")
 
-	negativesFile := flag.String("negatives", "", "If you want to measure aggression use it.\n"+
-		"\tExample: analyzer --file \"C:\\filename.txt\" --negatives \"C:\\negativewords.txt\" ")
+	aggression := flag.Bool("aggression", false, "If you want to measure aggression use it.\n"+
+		"\tExample: analyzer --file \"C:\\filename.txt\"  --username \"Cem Asma\" --aggression true")
 
 	messageFrequency := flag.Bool("messagef", false, "It measure the messaging frequency in date by date.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef")
@@ -54,12 +53,12 @@ func main() {
 
 		count := wanalyzer.CountWordInLines(*word, lines)
 		fmt.Printf("%s\t\t\t\t\tCount: %d", *word, count)
-	} else if len(*negativesFile) > 0 && len(*username) > 0 {
-		count := wanalyzer.AggressionCount(lines, strings.Split(wanalyzer.Read(*negativesFile), "\r\n"))
+	} else if *aggression == true && len(*username) > 0 {
+		count := wanalyzer.AggressionCount(lines)
 
-		fmt.Printf("%s's aggression count is: %d", *username, count)
-	} else if len(*negativesFile) > 0 {
-		calculatedAgg := wanalyzer.CalculateAggression(lines, strings.Split(wanalyzer.Read(*negativesFile), "\r\n"))
+		fmt.Printf("%s's aggression count is: %f", *username, count)
+	} else if *aggression {
+		calculatedAgg := wanalyzer.CalculateAggression(lines)
 
 		for key, val := range calculatedAgg {
 			if key != "total" {

@@ -1,0 +1,70 @@
+[
+    {
+        "class": "negative",
+        "sentence": "boş konuşma"
+    },
+    {
+        "class": "negative",
+        "sentence": "siktir lan ibne"
+    },
+    {
+        "class": "negative",
+        "sentence": "siktir git"
+    },
+    {
+        "class": "negative",
+        "sentence": "senin amına korum"
+    },
+    {
+        "class": "negative",
+        "sentence": "bok gibi olmuş"
+    },
+    {
+        "class": "negative",
+        "sentence": "salak salak konuşma"
+    },
+    {
+        "class": "negative",
+        "sentence": "aptalın tekisin"
+    },
+    {
+        "class": "negative",
+        "sentence": "tam bi gerizekalısın"
+    },
+    {
+        "class": "negative",
+        "sentence": "he amk aynen aynen"
+    },
+    {
+        "class": "positive",
+        "sentence": "eline sağlık kardeşim"
+    },
+    {
+        "class": "positive",
+        "sentence": "bravo çok iyi olmuş"
+    },
+    {
+        "class": "positive",
+        "sentence": "baya güzel yapmışsın kanka helal"
+    },
+    {
+        "class": "positive",
+        "sentence": "fotoğrafta baya iyi çıkmışsın kanka"
+    },
+    {
+        "class": "positive",
+        "sentence": "helal kardeşim çok iyi"
+    },
+    {
+        "class": "positive",
+        "sentence": "çok güzel"
+    },
+    {
+        "class": "positive",
+        "sentence": "güzel fotoğraf açıkçası ben beğendim"
+    },
+    {
+        "class": "positive",
+        "sentence": "umarım daha iyi olursun"
+    }
+]

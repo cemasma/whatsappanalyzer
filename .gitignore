@@ -20,3 +20,7 @@ vendor
 cmd/debug
 
 Gopkg.lock
+
+main
+
+chat.txt

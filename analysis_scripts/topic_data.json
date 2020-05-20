@@ -1,0 +1,450 @@
+[
+    {
+        "class": "araba",
+        "sentence": "aldığım araba az yakıyor"
+    },
+    {
+        "class": "araba",
+        "sentence": "arabanın bagaj hacmi beklediğimden büyük"
+    },
+    {
+        "class": "araba",
+        "sentence": "arabanın performansı diğer arabama nazaran daha iyi"
+    },
+    {
+        "class": "araba",
+        "sentence": "araba cam filmi istediğim gibi ışığı geçirmiyor"
+    },
+    {
+        "class": "araba",
+        "sentence": "sunroof sayesinde arabadaki hava sirkülasyonu daha fazla"
+    },
+    {
+        "class": "araba",
+        "sentence": "cabrio araba aldığım için arabanın üstünü istedğim gibi açıyorum"
+    },
+    {
+        "class": "araba",
+        "sentence": "arabadan uzaklaşında otomatik olarak kapıları kitleniyor"
+    },
+    {
+        "class": "araba",
+        "sentence": "araba benzinli çok yakıyor para yetişmiyor"
+    },
+    {
+        "class": "araba",
+        "sentence": "Mercedes S500L uzun olduğu için park edemiyorum"
+    },
+    {
+        "class": "araba",
+        "sentence": "tekerleğime çivi battığı için tekerlek parçalandı"
+    },
+    {
+        "class": "araba",
+        "sentence": "arabadaki deri koltuklar zamanla oturmaktan aşındı"
+    },
+    {
+        "class": "araba",
+        "sentence": "otomatik vites arabanın beyni hasar aldığında çok masraflı oluyor"
+    },
+    {
+        "class": "araba",
+        "sentence": "ülkemizde araba vergilari çok olduğu için almak zorlaştı"
+    },
+    {
+        "class": "araba",
+        "sentence": "yeni çıkan golf arabanın karbon salınımı diğer araçlara göre fazla"
+    },
+    {
+        "class": "asker",
+        "sentence": "yeni mpt55ler tam olarak beklediğim gibi"
+    },
+    {
+        "class": "asker",
+        "sentence": "s70 blackhawklara yapılan modernizasyon çok kaliteli"
+    },
+    {
+        "class": "asker",
+        "sentence": "milgem sınıfı korvetlerin teslimi beklenildiğinden önce yapıldı"
+    },
+    {
+        "class": "asker",
+        "sentence": "ordumuz nato'da en etkin ülkeler arasında baş sıraları çekmekte"
+    },
+    {
+        "class": "asker",
+        "sentence": "yapılan kaçakcı baskınında 2382 paket sigara ele geçirildi"
+    },
+    {
+        "class": "asker",
+        "sentence": "f16 d modernizasyonu 70'li yıllardan beri devam edip gelişmekte"
+    },
+    {
+        "class": "asker",
+        "sentence": "insansız hava aracı konusunda gelişmiş ülkelere kafa tutmaktayız"
+    },
+    {
+        "class": "asker",
+        "sentence": "geçen hafta teroristlerin yaptığı pusuda 4 askerimiz şehit oldu"
+    },
+    {
+        "class": "asker",
+        "sentence": "ülkemiz hava savunma konusunda çok geride"
+    },
+    {
+        "class": "asker",
+        "sentence": "yapılan darbe yüzünden askeriye itibarı zedenlenmeye çalışıldı"
+    },
+    {
+        "class": "asker",
+        "sentence": "bazı askeriye sınıflarındaki ekipmanalar yeterli değil"
+    },
+    {
+        "class": "asker",
+        "sentence": "Holo dürbün,dürbün gibi konularda çok fazla gelişmemiz lazım"
+    },
+    {
+        "class": "asker",
+        "sentence": "hava araçlarındaki kazalarda hayatta kalma ihtimali çok düşüktür"
+    },
+    {
+        "class": "asker",
+        "sentence": "ülkemizin bombardıman uçağı olarak f35 projendeki itibarı zedelendi"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "yeni çıkan iphone modeli çok daha ince çerçeveli olmuş"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "teknoloji sayesinde uzaktaki tanıdıklarımla görüntülü konuştum"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "onlayn dergileri takip etmemde teknolojinin faydası var"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "fiber altyapı sayesinde çok daha yüksek hızlara ulaşabiliyorum"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "sosyal medya sayesinde haberlerden erken haberdar oluyoruz"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "teknoloji yeni bir çok işe ev sahipliği yaptı"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "teknoloji yüzünden kişisel hakların ihlali arttı"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "kötü niyetli hackerlar ortaya çıktı"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "silahlar insansız hava araçları ortaya çıktı ve sivil ölüm veya askeri kayıp arttı"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "dark web yüzünden karanlık iş grupları ortaya çıktı"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "insanların radyasyon yüzünden kanser olma riski arttı"
+    },
+    {
+        "class": "teknoloji",
+        "sentence": "bedava sunulan her teknolojinin bir bedeli vardır"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "beslenmemize dikkat ederek sağlıklı yaşam sürdürülebiliriz"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "spor en önemli faktörlerden birisi"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "sigara içmeyen birisi sağlık açısından daha iyi durumdadır"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "kanseri aldığı terapilerle yenmeyi başardı"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "aids aşısı bulunduğu için milyonlarca insan mutlu"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "yeni geliştirilen ilaçlar eskiye oranla çok daha başarılı"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "ilaçları dikkatli kullanmazsak zehirlenme hatta ölümlere yol açabilir"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "uyku düzeni olmayan insanaların cildleri daha kötü durumdadır"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "doktor reçetesi dışında ilaç kullanmak zararlıdır"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "kafein kullanmak sağlığı olumsuz etkiler"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "zayıflamak için tüketilen merdiven altı ilaçlar sağlığı olumsuz etkiledi"
+    },
+    {
+        "class": "sağlık",
+        "sentence": "kara ölüm,veba zamanında dünya nufüsünün büyük kısmı vefat etmiştir"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "muharrem ince bu yıl iyi gidiyor"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "rte g20'de ne konuşmuş be"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "meral mommy yine haklı konuşmuş"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "chp'de izmiti sonunda aldı bee"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "ekrem başkan da iyi çalışıyor ama"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "mansur yavaş'ta güzel şeyler yapmaya başlamış"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "abi hükümet ekonomiyi çok kötü yönetiyor"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "bu son olaylar yüzünden de dolar çok arttı ya"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "trump yine ne saçmalıyor ya"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "kemal kılıçdaroğlu yine boş boş konuşuyo"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "melih gökçek yine sallıyor bişeyler"
+    },
+    {
+        "class": "siyaset",
+        "sentence": "chp boluyu çok kötü yönetiyor"
+    },
+    {
+        "class": "spor",
+        "sentence": "gs son zamanlarda iyi döndü he"
+    },
+    {
+        "class": "spor",
+        "sentence": "trabzon bu yıl şampiyon olacak bence"
+    },
+    {
+        "class": "spor",
+        "sentence": "arda turan sakatlıktan çıkınca iyi oynamaya başlamış"
+    },
+    {
+        "class": "spor",
+        "sentence": "fenerin bu yıl ki transferleri de bomba"
+    },
+    {
+        "class": "spor",
+        "sentence": "bu sene antalyaspordan patlama bekliyorum"
+    },
+    {
+        "class": "spor",
+        "sentence": "konyanın transferleri fena değil"
+    },
+    {
+        "class": "spor",
+        "sentence": "fener yine çok leş oynamış"
+    },
+    {
+        "class": "spor",
+        "sentence": "gs bu maçı yine kaybeder"
+    },
+    {
+        "class": "spor",
+        "sentence": "başakşehir inş küme düşer"
+    },
+    {
+        "class": "spor",
+        "sentence": "akhisar zaten bu maçı yenilir"
+    },
+    {
+        "class": "spor",
+        "sentence": "kayseri bu gidişle küme düşer"
+    },
+    {
+        "class": "spor",
+        "sentence": "o takıma yılmaz vural geldiyse kesin küme düşmeye oynar"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "son sınavdan notum çok iyi geldi"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "abi sayısal dersini geçmişim ya"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "bugün dersi çok iyi anladım"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "şu çocuk çok iyi not tutmuş"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "dersi ön sıradan daha iyi anlıyorum"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "şu çocuk çok iyi not tutmuş"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "matematik 2den kalmışım"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "diften hoca çok düşük not vermiş"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "5 dakika geç kaldım diye derse almadı"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "bugün ki ders iptal olmuş"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "hoca ders dışında çok fazla konuşuyor"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "bu dersten hiç birşey anlamıyorum"
+    },
+    {
+        "class": "yemek",
+        "sentence": "köftenin tadı mükemmel"
+    },
+    {
+        "class": "yemek",
+        "sentence": "salata nefis olmuş"
+    },
+    {
+        "class": "yemek",
+        "sentence": "çiğköftenin ayarını tam yapmışsın"
+    },
+    {
+        "class": "yemek",
+        "sentence": "bu tatlıyı bu kadar güzel nasıl yapıyorsun ya"
+    },
+    {
+        "class": "yemek",
+        "sentence": "annem çok güzel mantı yapar"
+    },
+    {
+        "class": "yemek",
+        "sentence": "künefe çok iyi tatlı ya"
+    },
+    {
+        "class": "yemek",
+        "sentence": "çorbanın tuzu çok fazla"
+    },
+    {
+        "class": "yemek",
+        "sentence": "makarna tam pişmemiş yiyemedim"
+    },
+    {
+        "class": "yemek",
+        "sentence": "çaya şekeri çok atmışsın"
+    },
+    {
+        "class": "yemek",
+        "sentence": "patlıcan ağzımın tadını bozdu"
+    },
+    {
+        "class": "yemek",
+        "sentence": "acı kahvenin tadı da çok iğrenç içilmiyo"
+    },
+    {
+        "class": "yemek",
+        "sentence": "sütlü tatlıları hiç sevmiyorum"
+    },
+    {
+        "class": "dizi",
+        "sentence": "eşkiya dizisi çok iyi ya"
+    },
+    {
+        "class": "dizi",
+        "sentence": "kurtlar vadisi ne kral diziydi be"
+    },
+    {
+        "class": "dizi",
+        "sentence": "game of thrones bu sezon çok iyi"
+    },
+    {
+        "class": "dizi",
+        "sentence": "bence en iyisi breaking bad"
+    },
+    {
+        "class": "dizi",
+        "sentence": "mr robot bilişim konulu güzel dizi"
+    },
+    {
+        "class": "dizi",
+        "sentence": "eşkiya dizisi çok iyi ya"
+    },
+    {
+        "class": "dizi",
+        "sentence": "witcherın ilk sezonu çok vasat"
+    },
+    {
+        "class": "dizi",
+        "sentence": "game of thrones çok leş bir final yaptı"
+    },
+    {
+        "class": "dizi",
+        "sentence": "supernatural bir yerden sonra çok sıkıcı geliyo"
+    },
+    {
+        "class": "dizi",
+        "sentence": "yine dandik fbi dizilerinden biri"
+    },
+    {
+        "class": "dizi",
+        "sentence": "bunun gibi bir çok kötü dizi izledim"
+    },
+    {
+        "class": "dizi",
+        "sentence": "klasik yaz bitince final yapacak dizilerden"
+    }
+]
