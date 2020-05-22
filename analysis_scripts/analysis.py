@@ -21,8 +21,6 @@ args = parser.parse_args()
 analysis_type = args.type
 input_sentence = args.sentence
 
-analysis_type = 'sentiment'
-
 # compute sigmoid nonlinearity
 def sigmoid(x):
     output = 1/(1+np.exp(-x))
@@ -74,7 +72,7 @@ ERROR_THRESHOLD = 0.9
 synapse_file = "sentiment_synapses.json"
 if analysis_type == "topic":
     synapse_file = "topic_synapses.json"
-    ERROR_THRESHOLD = 0.5
+    ERROR_THRESHOLD = 0.4
 elif analysis_type == "sentiment":
     synapse_file = "sentiment_synapses.json" 
 

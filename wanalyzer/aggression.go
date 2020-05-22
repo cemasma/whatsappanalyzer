@@ -49,7 +49,7 @@ func AggressionCount(lines []string) (aggression float64) {
 				score, _ := getScore(strOutput, "positive")
 				aggression -= score
 			}
-
+			fmt.Println(sentence)
 			fmt.Println(aggression)
 		}
 	}
