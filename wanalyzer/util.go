@@ -53,6 +53,30 @@ func GetUserLines(lines []string, username string) (specifiedLines []string) {
 	return specifiedLines
 }
 
+// GetLinesByDate filters lines by date information and returns filtered lines
+func GetLinesByDate(lines []string, date string) (filteredLines []string) {
+	formattedDate := strings.ReplaceAll(date, ".", " ")
+
+	for _, value := range lines {
+		if strings.Index(value, formattedDate) > -1 {
+			filteredLines = append(filteredLines, value)
+		}
+	}
+
+	return
+}
+
+// GetTopicsFromResult provides topics by input
+func GetTopicsFromResult(input string) (topics []string) {
+	r := regexp.MustCompile(`'.*?'`)
+	matches := r.FindAllStringSubmatch(input, -1)
+	for _, v := range matches {
+		topics = append(topics, strings.ReplaceAll(v[0], "'", ""))
+	}
+
+	return
+}
+
 // GetUsernames finds the usernames in lines and returns
 func GetUsernames(lines []string) (usernames []string) {
 	for _, line := range lines {

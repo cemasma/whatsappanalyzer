@@ -28,6 +28,11 @@ func main() {
 	aggression := flag.Bool("aggression", false, "If you want to measure aggression use it.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\"  --username \"Cem Asma\" --aggression true")
 
+	date := flag.String("date", "", "You must specify the date information when you want to observe topics.")
+
+	topic := flag.Bool("topic", false, "If you want to observer topics you must specify the date.\n"+
+		"\tExample: analyzer --file \"C:\\filename.txt\" --date \"14.02.2018\" --topic true")
+
 	messageFrequency := flag.Bool("messagef", false, "It measure the messaging frequency in date by date.\n"+
 		"\tExample: analyzer --file \"C:\\filename.txt\" --messagef")
 
@@ -64,12 +69,19 @@ func main() {
 			if key != "total" {
 				percent := (float64((val * 100)) / float64(calculatedAgg["total"]))
 				fmt.Printf("%s %f percent aggressive by total. \n", key, percent)
-				fmt.Printf("%s's using count is %d\n\n", key, val)
+				fmt.Printf("%s's using count is %f\n\n", key, val)
 			}
 		}
 
-		fmt.Printf("The total negative aggression count is: %d", calculatedAgg["total"])
+		fmt.Printf("The total negative aggression count is: %f", calculatedAgg["total"])
+	} else if *topic && len(*date) > 0 {
+		lines = wanalyzer.GetLinesByDate(lines, *date)
 
+		topicsMap := wanalyzer.ObserverTopics(lines)
+
+		for key, value := range topicsMap {
+			fmt.Println("Topic: ", key, " ", value)
+		}
 	} else if *messageFrequency {
 
 		dates := wanalyzer.GetDatesFromLines(lines)

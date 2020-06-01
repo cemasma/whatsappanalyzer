@@ -5,19 +5,19 @@
     },
     {
         "class": "negative",
-        "sentence": "siktir lan ibne"
+        "sentence": "yürü lan"
     },
     {
         "class": "negative",
-        "sentence": "siktir git"
+        "sentence": "yürü git"
     },
     {
         "class": "negative",
-        "sentence": "senin amına korum"
+        "sentence": "senin dövmekten beter ederim"
     },
     {
         "class": "negative",
-        "sentence": "bok gibi olmuş"
+        "sentence": "çok kötü olmuş"
     },
     {
         "class": "negative",
@@ -33,7 +33,15 @@
     },
     {
         "class": "negative",
-        "sentence": "he amk aynen aynen"
+        "sentence": "he aynen aynen"
+    },
+    {
+        "class": "negative",
+        "sentence": "aptal aptal konuşma"
+    },
+    {
+        "class": "negative",
+        "sentence": "aptalsın"
     },
     {
         "class": "positive",

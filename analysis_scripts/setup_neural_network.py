@@ -34,6 +34,10 @@ words = []
 classes = []
 documents = []
 ignore_words = ['?']
+
+if analysis_type == 'topic':
+    ignore_words.extend(["çok", "bir", "cok", "ve", "iyi", "kötü", "leş", "saçma", "abi", "kardeşim", "nasıl", "ile", "veya"])
+
 # loop through each sentence in our training data
 for pattern in training_data:
     # tokenize each word in the sentence

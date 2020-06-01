@@ -1,7 +1,7 @@
 [
     {
         "class": "araba",
-        "sentence": "aldığım araba az yakıyor"
+        "sentence": "hyundai az yakıyor"
     },
     {
         "class": "araba",
@@ -57,51 +57,7 @@
     },
     {
         "class": "asker",
-        "sentence": "yeni mpt55ler tam olarak beklediğim gibi"
-    },
-    {
-        "class": "asker",
-        "sentence": "s70 blackhawklara yapılan modernizasyon çok kaliteli"
-    },
-    {
-        "class": "asker",
-        "sentence": "milgem sınıfı korvetlerin teslimi beklenildiğinden önce yapıldı"
-    },
-    {
-        "class": "asker",
-        "sentence": "ordumuz nato'da en etkin ülkeler arasında baş sıraları çekmekte"
-    },
-    {
-        "class": "asker",
-        "sentence": "yapılan kaçakcı baskınında 2382 paket sigara ele geçirildi"
-    },
-    {
-        "class": "asker",
-        "sentence": "f16 d modernizasyonu 70'li yıllardan beri devam edip gelişmekte"
-    },
-    {
-        "class": "asker",
-        "sentence": "insansız hava aracı konusunda gelişmiş ülkelere kafa tutmaktayız"
-    },
-    {
-        "class": "asker",
-        "sentence": "geçen hafta teroristlerin yaptığı pusuda 4 askerimiz şehit oldu"
-    },
-    {
-        "class": "asker",
-        "sentence": "ülkemiz hava savunma konusunda çok geride"
-    },
-    {
-        "class": "asker",
-        "sentence": "yapılan darbe yüzünden askeriye itibarı zedenlenmeye çalışıldı"
-    },
-    {
-        "class": "asker",
-        "sentence": "bazı askeriye sınıflarındaki ekipmanalar yeterli değil"
-    },
-    {
-        "class": "asker",
-        "sentence": "Holo dürbün,dürbün gibi konularda çok fazla gelişmemiz lazım"
+        "sentence": "askere gittin mi"
     },
     {
         "class": "asker",
@@ -133,15 +89,7 @@
     },
     {
         "class": "teknoloji",
-        "sentence": "teknoloji yeni bir çok işe ev sahipliği yaptı"
-    },
-    {
-        "class": "teknoloji",
         "sentence": "teknoloji yüzünden kişisel hakların ihlali arttı"
-    },
-    {
-        "class": "teknoloji",
-        "sentence": "kötü niyetli hackerlar ortaya çıktı"
     },
     {
         "class": "teknoloji",
@@ -149,15 +97,27 @@
     },
     {
         "class": "teknoloji",
-        "sentence": "dark web yüzünden karanlık iş grupları ortaya çıktı"
+        "sentence": "programlama dili üzerine çözüm inşa etmekten çok mimari yapı daha önemli"
     },
     {
         "class": "teknoloji",
-        "sentence": "insanların radyasyon yüzünden kanser olma riski arttı"
+        "sentence": "yazılım aracılığı ile manuel bir çok iş teknolojik hale getirilebilir"
     },
     {
         "class": "teknoloji",
         "sentence": "bedava sunulan her teknolojinin bir bedeli vardır"
+    },
+    {
+        "class": "yazılım",
+        "sentence": "yazılımcılık çok güzel meslek"
+    },
+    {
+        "class": "yazılım",
+        "sentence": "programlama dili olarak ne kullandın"
+    },
+    {
+        "class": "yazılım",
+        "sentence": "c++ java go python node.js deno rust"
     },
     {
         "class": "sağlık",
@@ -208,54 +168,6 @@
         "sentence": "kara ölüm,veba zamanında dünya nufüsünün büyük kısmı vefat etmiştir"
     },
     {
-        "class": "siyaset",
-        "sentence": "muharrem ince bu yıl iyi gidiyor"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "rte g20'de ne konuşmuş be"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "meral mommy yine haklı konuşmuş"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "chp'de izmiti sonunda aldı bee"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "ekrem başkan da iyi çalışıyor ama"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "mansur yavaş'ta güzel şeyler yapmaya başlamış"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "abi hükümet ekonomiyi çok kötü yönetiyor"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "bu son olaylar yüzünden de dolar çok arttı ya"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "trump yine ne saçmalıyor ya"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "kemal kılıçdaroğlu yine boş boş konuşuyo"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "melih gökçek yine sallıyor bişeyler"
-    },
-    {
-        "class": "siyaset",
-        "sentence": "chp boluyu çok kötü yönetiyor"
-    },
-    {
         "class": "spor",
         "sentence": "gs son zamanlarda iyi döndü he"
     },
@@ -265,11 +177,11 @@
     },
     {
         "class": "spor",
-        "sentence": "arda turan sakatlıktan çıkınca iyi oynamaya başlamış"
+        "sentence": "son maç çok iyi oynuyordu fakat maçın yarısında sakatlandı"
     },
     {
         "class": "spor",
-        "sentence": "fenerin bu yıl ki transferleri de bomba"
+        "sentence": "takım için transfer bekliyoruz"
     },
     {
         "class": "spor",
@@ -297,7 +209,7 @@
     },
     {
         "class": "spor",
-        "sentence": "kayseri bu gidişle küme düşer"
+        "sentence": "son dakika penaltı kararları maç için her şeyi değiştiriyor"
     },
     {
         "class": "spor",
@@ -305,7 +217,7 @@
     },
     {
         "class": "eğitim",
-        "sentence": "son sınavdan notum çok iyi geldi"
+        "sentence": "sınav notum çok iyi geldi"
     },
     {
         "class": "eğitim",
@@ -317,19 +229,23 @@
     },
     {
         "class": "eğitim",
-        "sentence": "şu çocuk çok iyi not tutmuş"
+        "sentence": "şu çocuk çok iyi not tutmuş final sınavları vize sınavları iş görür"
     },
     {
         "class": "eğitim",
-        "sentence": "dersi ön sıradan daha iyi anlıyorum"
+        "sentence": "ders ön sıradan daha iyi anlaşılıyor"
     },
     {
         "class": "eğitim",
-        "sentence": "şu çocuk çok iyi not tutmuş"
+        "sentence": "ders notu tutmuş"
     },
     {
         "class": "eğitim",
-        "sentence": "matematik 2den kalmışım"
+        "sentence": "nöron ağlarına giriş alıyorum bu dönem"
+    },
+    {
+        "class": "eğitim",
+        "sentence": "bugünlerde popüler olan bir çok konunun temelinde nöron ağları var"
     },
     {
         "class": "eğitim",
@@ -341,7 +257,7 @@
     },
     {
         "class": "eğitim",
-        "sentence": "bugün ki ders iptal olmuş"
+        "sentence": "ders iptal olmuş"
     },
     {
         "class": "eğitim",
@@ -349,7 +265,7 @@
     },
     {
         "class": "eğitim",
-        "sentence": "bu dersten hiç birşey anlamıyorum"
+        "sentence": "bu dersten hiçbir şey anlamıyorum"
     },
     {
         "class": "yemek",
@@ -357,11 +273,15 @@
     },
     {
         "class": "yemek",
+        "sentence": "yemekler fena değil tatlı efsane"
+    },
+    {
+        "class": "yemek",
         "sentence": "salata nefis olmuş"
     },
     {
         "class": "yemek",
-        "sentence": "çiğköftenin ayarını tam yapmışsın"
+        "sentence": "çiğ köftenin ayarını tam yapmışsın"
     },
     {
         "class": "yemek",
@@ -369,15 +289,15 @@
     },
     {
         "class": "yemek",
-        "sentence": "annem çok güzel mantı yapar"
+        "sentence": "annem enfes mantı yapar"
     },
     {
         "class": "yemek",
-        "sentence": "künefe çok iyi tatlı ya"
+        "sentence": "künefe lezzetli bir tatlı ya"
     },
     {
         "class": "yemek",
-        "sentence": "çorbanın tuzu çok fazla"
+        "sentence": "yemek vakti geldi araya çıkıyorum"
     },
     {
         "class": "yemek",
@@ -409,7 +329,7 @@
     },
     {
         "class": "dizi",
-        "sentence": "game of thrones bu sezon çok iyi"
+        "sentence": "game of thrones bu sezon çok iyi dizinin sonları bozmaz umarım"
     },
     {
         "class": "dizi",
@@ -421,30 +341,26 @@
     },
     {
         "class": "dizi",
-        "sentence": "eşkiya dizisi çok iyi ya"
+        "sentence": "ilk sezonu çok vasat komedi ama komik değil"
     },
     {
         "class": "dizi",
-        "sentence": "witcherın ilk sezonu çok vasat"
+        "sentence": "game of thrones çok leş final yaptı"
     },
     {
         "class": "dizi",
-        "sentence": "game of thrones çok leş bir final yaptı"
+        "sentence": "yine dandik fbi dizisi"
     },
     {
         "class": "dizi",
-        "sentence": "supernatural bir yerden sonra çok sıkıcı geliyo"
-    },
-    {
-        "class": "dizi",
-        "sentence": "yine dandik fbi dizilerinden biri"
-    },
-    {
-        "class": "dizi",
-        "sentence": "bunun gibi bir çok kötü dizi izledim"
+        "sentence": "bunun gibi birçok kötü dizi izledim"
     },
     {
         "class": "dizi",
         "sentence": "klasik yaz bitince final yapacak dizilerden"
+    },
+    {
+        "class": "dizi",
+        "sentence": "son sezon bayağı iyiydi"
     }
 ]
