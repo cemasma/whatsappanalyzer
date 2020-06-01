@@ -119,12 +119,6 @@ def train(X, y, hidden_neurons=10, alpha=1, epochs=50000, dropout=False, dropout
     # ağırlıkları rastgele olarak başlat
     synapse_0 = 2*np.random.random((len(X[0]), hidden_neurons)) - 1
     synapse_1 = 2*np.random.random((hidden_neurons, len(classes))) - 1
-
-    prev_synapse_0_weight_update = np.zeros_like(synapse_0)
-    prev_synapse_1_weight_update = np.zeros_like(synapse_1)
-
-    synapse_0_direction_count = np.zeros_like(synapse_0)
-    synapse_1_direction_count = np.zeros_like(synapse_1)
         
     for j in iter(range(epochs+1)):
 
@@ -159,17 +153,10 @@ def train(X, y, hidden_neurons=10, alpha=1, epochs=50000, dropout=False, dropout
         layer_1_delta = layer_1_error * sigmoid_output_to_derivative(layer_1)
         
         synapse_1_weight_update = (layer_1.T.dot(layer_2_delta))
-        synapse_0_weight_update = (layer_0.T.dot(layer_1_delta))
-        
-        if(j > 0):
-            synapse_0_direction_count += np.abs(((synapse_0_weight_update > 0)+0) - ((prev_synapse_0_weight_update > 0) + 0))
-            synapse_1_direction_count += np.abs(((synapse_1_weight_update > 0)+0) - ((prev_synapse_1_weight_update > 0) + 0))        
+        synapse_0_weight_update = (layer_0.T.dot(layer_1_delta))      
         
         synapse_1 += alpha * synapse_1_weight_update
         synapse_0 += alpha * synapse_0_weight_update
-        
-        prev_synapse_0_weight_update = synapse_0_weight_update
-        prev_synapse_1_weight_update = synapse_1_weight_update
 
     now = datetime.datetime.now()
 
