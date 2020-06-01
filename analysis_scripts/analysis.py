@@ -21,25 +21,25 @@ args = parser.parse_args()
 analysis_type = args.type
 input_sentence = args.sentence
 
-# compute sigmoid nonlinearity
+# sigmoid fonksiyonu
 def sigmoid(x):
     output = 1/(1+np.exp(-x))
     return output
 
-# convert output of sigmoid function to its derivative
+# sigmoid fonksiyonu türevi
 def sigmoid_output_to_derivative(output):
-    return output*(1-output)
+    return output*(1-output) # s(x)(1- s(x))
  
 def clean_up_sentence(sentence):
-    # tokenize the pattern
+    # cümleyi tokenize et
     sentence_words = nltk.word_tokenize(sentence)
-    # stem each word
+    # her kelimeyi stem yap
     sentence_words = [word for word in sentence_words]
     return sentence_words
 
-# return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
+# bag of words: 0 or 1 => cümlenin çantada bulunan kelimeleri için
 def bow(sentence, words, show_details=False):
-    # tokenize the pattern
+    # tokenize
     sentence_words = clean_up_sentence(sentence)
     # bag of words
     # print(words)
@@ -57,18 +57,18 @@ def bow(sentence, words, show_details=False):
 def think(sentence, show_details=False):
     x = bow(sentence.lower(), words, show_details)
     # print(x)
-    # input layer is our bag of words
+    # giriş katmanımız hazırladığımız bag of words
     l0 = x
-    # matrix multiplication of input and hidden layer
+    # matrix çarpımı input*hidden layer
     l1 = sigmoid(np.dot(l0, synapse_0))
-    # output layer
+    # çıkış katmanı
     l2 = sigmoid(np.dot(l1, synapse_1))
     return l2
 
-# probability threshold
+# olasılık thresholdu
 ERROR_THRESHOLD = 0.9
 
-# load our calculated synapse values
+# synapsleri load et analiz tipine göre
 synapse_file = "sentiment_synapses.json"
 if analysis_type == "topic":
     synapse_file = "topic_synapses.json"
