@@ -30,19 +30,16 @@ It helps to analyze your Whatsapp chat records with making parse on records. As 
 <br>For this: https://www.whatsapp.com/faq/en/android/23756533
 
 # Build Project
-1. Download the project. 
-```sh 
-git clone https://github.com/cemasma/whatsappanalyzer
+
+1. Build the project via Go.
+```sh
+go build main.go
 ```
 
-2. Get the dependencies using by dep.
-```sh 
-dep ensure
- ```
+2. I renamed the executable as "analyzer" and I add it to paths. So I can run it anywhere. You can skip this option but remember that if you want to run project then you must be in the directory which is contains the executable.
 
-3. And you are ready to build.
 ```sh
-go build cmd/main.go
+analyzer --help
 ```
 
 # Usage
@@ -61,7 +58,8 @@ analyzer --help
 | limit     | You can limit the list from start to sended value.                         |
 | start     | It sets starting index of list to sended value.                            |
 | word      | Finds the count of specific word or sentence.                              |
-| negatives | You can observe the aggression with identifying some aggressive words.     |
+| aggression| You can observe the aggression by users.                                   |
+| topic     | It provides topics that spoken in chat and filters that by date.           |
 | messagef  | It provides a graph for observe messaging frequency.                       |
 | timef     | It provides a graph for observe messaging frequency in time periods.       |
 | printf    | While with messagef it sorts messaging frequency by activity and prints. While with timef it prints messaging frequency in time periods.|
@@ -71,76 +69,74 @@ analyzer --help
 
 * For find the most used words in general.
     ```sh
-    analyzer --file "C:\chatrecord.txt"
+    analyzer --file "chatrecord.txt"
     ```
 
 * For find the most used words for specific person.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --username "Cem Asma"
+    analyzer --file "chatrecord.txt" --username "Cem Asma"
     ```
 
 * If you do not send limit, program sets it defaultly 10. For see more or less words.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --limit 20
+    analyzer --file "chatrecord.txt" --limit 20
     ```
 
     ```sh
-    analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --limit 20
+    analyzer --file "chatrecord.txt" --username "Cem Asma" --limit 20
     ```
 
 * For set the starting index.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --start 10
+    analyzer --file "chatrecord.txt" --start 10
     ```
 
 * You can combine start and limit.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --start 10 --limit 20
+    analyzer --file "chatrecord.txt" --start 10 --limit 20
     ```
 
 * For find the count of specific word or sentence.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --word "test"
+    analyzer --file "chatrecord.txt" --word "test"
     ```
 
     ```sh
-    analyzer --file "C:\chatrecord.txt" --word "hello world"
+    analyzer --file "chatrecord.txt" --word "hello world"
     ```
 
-* If you send the negative words in a file via file address you can measure the aggression by these words.
+* If you send the username and specify the aggression parameters as true you can measure the users aggression with artificial neural network.
 
-    This file's content must be like this;
-    ```
-    fuck you
-    fuck
-    shit
-    ```
-
-    After creation this file you can use it like this;
     ```sh
-    analyzer --file "C:\chatrecord.txt" --negatives "C:\negatives.txt"
+    analyzer --file "chatrecord.txt" --username "Cem Asma" --agression true
+    ```
+
+* Also we can observe the topics that spoken in chat by the date information.
+
+    ```sh
+    analyzer --date "5.30.20" --topic true
     ```
 
 * It counts your messages in day  by day and draws a graphs. It saves the graph image on where you are. With that you can observe messaging frequency.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --messagef
+    analyzer --file "chatrecord.txt" --messagef
     ```
 
     ```sh
-    analyzer --file "C:\chatrecord.txt" --username "Cem Asma" --messagef
+    analyzer --file "chatrecord.txt" --username "Cem Asma" --messagef
     ```
 
 * It sorts message frequency by message counts and prints.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --messagef --printf
+    analyzer --file "chatrecord.txt" --messagef --printf
     ```
 
 * It provides a graph for observe messaging frequency in time periods.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --timef
+    analyzer --file "chatrecord.txt" --timef
     ```
 
 * It prints the values of messaging frequency by time periods.
     ```sh
-    analyzer --file "C:\chatrecord.txt" --timef --printf
+    analyzer --file "chatrecord.txt" --timef --printf
     ```
