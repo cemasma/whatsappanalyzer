@@ -1,15 +1,29 @@
 # whatsapp-analyzer
 
-It helps to analyze your Whatsapp chat records with making parse on records. As example you can measure the aggression, you can see the words in order of use and you can see the frequency of messaging.
+It helps you to analyze your Whatsapp chat records by combining Image Processing, Structured Chat Data and Artificial Neural Networks.
+- Measure the aggression using Sentiment Analysis
+- Examine the topics using Topic Detection
+- Examine the chat frequency whether throughout the CLI or Visualization
 
+And you can perform all the tasks mentioned above on any type of the data, unless it follows the same format as demonstrated in the below example.
+```
+[17.10.2021 16:34:18] Alice: Hey Bob! How's it going?
+[17.10.2021 16:34:38] Bob: Hey Alice! I'm good, thanks. How about you?
+[17.10.2021 16:35:14] Alice: I'm doing well too, thanks. Got any plans for the weekend?
+[17.10.2021 16:35:20] Bob: Not much, just thinking of catching up on some reading. How about you?
+[18.10.2021 02:13:46] Alice: Sounds relaxing! I'm actually thinking of going for a hike on Saturday. There's a beautiful trail I've been wanting to explore.
+```
 
 # Getting Started
 
-1. First build the project by yourself or download the app which is available for your operating system from releases:
-
-    https://github.com/cemasma/whatsappanalyzer/releases/latest
-
-2. After, add the folder of app to your PATH.
+1. First build the project.
+    ```
+    git clone https://github.com/cemasma/whatsappanalyzer
+    cd whatsappanalyzer
+    go build main.go -o analyzer
+    pip install -r analysis_scripts/requirements.txt
+    ```
+2. Add the folder of app to your PATH.
 
     In OSX or any of Linux you can do it in terminal with this command:
     ```sh
@@ -17,16 +31,13 @@ It helps to analyze your Whatsapp chat records with making parse on records. As 
     ```
 
     Follow these instructions for Windows:
-    1. From the desktop, right click the Computer icon.
+    1. From the desktop, right-click the Computer icon.
     2. Choose Properties from the context menu.
     3. Click the Advanced system settings link.
     4. Click Environment Variables. In the section System Variables, find the PATH environment variable and select it.
     5. Click Edit. If the PATH environment variable does not exist, click New.
     6. In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
-
-<br>
-
-3. You must send the chat record without media to your email from Whatsapp. After export, download the chat record from your email.
+3. You should export your chat record from Whatsapp as a txt file.
 <br>For this: https://www.whatsapp.com/faq/en/android/23756533
 
 # Build Project
@@ -44,7 +55,7 @@ analyzer --help
 
 # Usage
 
-After those steps you are ready to use the app in console. I suggest the help command for the first opening.
+After those steps you are ready to use the CLI.
 
 ```sh
 analyzer --help
@@ -67,26 +78,27 @@ analyzer --help
 
 ## Examples
 
-* For find the most used words in general.
+* Find the most commonly used words in general.
     ```sh
     analyzer --file "chatrecord.txt"
     ```
 
-* For find the most used words for specific person.
+* Find the most commonly used words in general for a person.
     ```sh
     analyzer --file "chatrecord.txt" --username "Cem Asma"
     ```
 
-* If you do not send limit, program sets it defaultly 10. For see more or less words.
+* You can adjust a limit for the word counts to display more or fewer words. If you do not set a limit, the program defaults to 10.
     ```sh
     analyzer --file "chatrecord.txt" --limit 20
     ```
 
+* You can combine it to with user filter.
     ```sh
     analyzer --file "chatrecord.txt" --username "Cem Asma" --limit 20
     ```
 
-* For set the starting index.
+* Set starting index.
     ```sh
     analyzer --file "chatrecord.txt" --start 10
     ```
@@ -96,7 +108,7 @@ analyzer --help
     analyzer --file "chatrecord.txt" --start 10 --limit 20
     ```
 
-* For find the count of specific word or sentence.
+* Find the count of a specific word or sentence.
     ```sh
     analyzer --file "chatrecord.txt" --word "test"
     ```
@@ -105,28 +117,34 @@ analyzer --help
     analyzer --file "chatrecord.txt" --word "hello world"
     ```
 
-* If you send the username and specify the aggression parameters as true you can measure the users aggression with artificial neural network.
+* You can measure users' aggression using Artificial Neural Network.
 
     ```sh
     analyzer --file "chatrecord.txt" --username "Cem Asma" --agression true
     ```
 
-* Also we can observe the topics that spoken in chat by the date information.
+* Furthermore, you can analyze the topics discussed in the chat by the date information.
 
     ```sh
-    analyzer --date "5.30.20" --topic true
+    analyzer --file "chatrecord.txt" --topic true
+    ```
+  
+* You can always combine them with date filter.
+    ```sh
+    analyzer --file "chatrecord.txt" --date "5.30.20" --topic true
     ```
 
-* It counts your messages in day  by day and draws a graphs. It saves the graph image on where you are. With that you can observe messaging frequency.
+* It counts your messages per day and visualize it throughout a png image. It saves the graph image into the path you run the program.
     ```sh
     analyzer --file "chatrecord.txt" --messagef
     ```
+   ![img.png](example_images/img.png)
 
     ```sh
     analyzer --file "chatrecord.txt" --username "Cem Asma" --messagef
     ```
 
-* It sorts message frequency by message counts and prints.
+* It prints message frequency by sorting it using message counts.
     ```sh
     analyzer --file "chatrecord.txt" --messagef --printf
     ```
@@ -135,8 +153,9 @@ analyzer --help
     ```sh
     analyzer --file "chatrecord.txt" --timef
     ```
+    ![img_1.png](example_images/img_1.png)
 
-* It prints the values of messaging frequency by time periods.
+* It prints the messaging frequency by time periods.
     ```sh
     analyzer --file "chatrecord.txt" --timef --printf
     ```

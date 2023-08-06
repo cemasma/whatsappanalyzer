@@ -17,17 +17,17 @@ func TestSortFrequency(t *testing.T) {
 		{
 			name: "TestSortFrequency",
 			args: args{frequence: []MessageFrequence{
-				MessageFrequence{Date: "1.01.2017", Count: 1000},
-				MessageFrequence{Date: "2.01.2017", Count: 1001},
+				{Date: "1.01.2017", Count: 1000},
+				{Date: "2.01.2017", Count: 1001},
 			}},
 			want: []MessageFrequence{
-				MessageFrequence{Date: "2.01.2017", Count: 1001},
-				MessageFrequence{Date: "1.01.2017", Count: 1000},
+				{Date: "2.01.2017", Count: 1001},
+				{Date: "1.01.2017", Count: 1000},
 			},
 		},
 	}
 	for _, tt := range tests {
-		if got := SortFrequency(tt.args.frequence); !reflect.DeepEqual(got, tt.want) {
+		if got := sortFrequency(tt.args.frequence); !reflect.DeepEqual(got, tt.want) {
 			t.Errorf("%q. SortFrequency() = %v, want %v", tt.name, got, tt.want)
 		}
 	}
@@ -47,17 +47,17 @@ func TestGetMessageFrequency(t *testing.T) {
 			name: "TestGetMessageFrequency",
 			args: args{
 				lines: []string{
-					"27.11.2016, 16:11 - Cem Asma: iyi dersler",
-					"27.11.2016, 16:11 - Cem Asma: iyi çalışmalar",
-					"28.11.2016, 16:11 - Cem Asma: iyi günler",
-					"31.12.2016, 16:11 - Cem Asma: iyi seneler",
+					"[27.11.2016 16:11] Cem Asma: iyi dersler",
+					"[27.11.2016 16:11] Cem Asma: iyi çalışmalar",
+					"[28.11.2016 16:11] Cem Asma: iyi günler",
+					"[31.12.2016 16:11] Cem Asma: iyi seneler",
 				},
 				dates: []string{"27.11.2016", "28.11.2016", "31.12.2016"},
 			},
 			wantFrequency: []MessageFrequence{
-				MessageFrequence{Date: "27.11.2016", Count: 2},
-				MessageFrequence{Date: "28.11.2016", Count: 1},
-				MessageFrequence{Date: "31.12.2016", Count: 1},
+				{Date: "27.11.2016", Count: 2},
+				{Date: "28.11.2016", Count: 1},
+				{Date: "31.12.2016", Count: 1},
 			},
 		},
 	}
@@ -72,21 +72,23 @@ func TestGetDatesFromLines(t *testing.T) {
 	type args struct {
 		lines []string
 	}
+
 	tests := []struct {
 		name      string
 		args      args
-		wantDates []string
+		wantDates map[string]int
 	}{
 		{
 			name: "TestGetDatesFromLines",
 			args: args{
 				lines: []string{
-					"27.11.2016, 16:11 - Cem Asma: iyi dersler",
-					"2.12.2016, 16:11 - Cem Asma: iyi günler",
-					"31.12.2016, 16:11 - Cem Asma: iyi seneler",
+					"[27.11.2016 16:11] Cem Asma: iyi dersler",
+					"[2.12.2016 16:11] Cem Asma: iyi günler",
+					"[31.12.2016 16:11] Cem Asma: iyi seneler",
+					"[31.12.2016 16:11] Cem Asma: iyi seneler",
 				},
 			},
-			wantDates: []string{"27.11.2016", "2.12.2016", "31.12.2016"},
+			wantDates: map[string]int{"27.11.2016": 1, "2.12.2016": 1, "31.12.2016": 2},
 		},
 	}
 	for _, tt := range tests {
@@ -109,9 +111,9 @@ func TestGetTimeFrequency(t *testing.T) {
 			name: "TestGetTimeFrequency",
 			args: args{
 				lines: []string{
-					"19.02.2017, 17:49 - Cem Asma: test",
-					"9.02.2017, 04:49 - Cem Asma: test",
-					"9.02.2017, ..:49 - Cem Asma: test",
+					"[19.02.2017, 17:49] Cem Asma: test",
+					"[9.02.2017, 04:49] Cem Asma: test",
+					"[9.02.2017, ..:49] Cem Asma: test",
 				},
 			},
 			wantTimeFrequence: map[string]int{

@@ -1,6 +1,10 @@
 package wanalyzer
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
 
 // MessageFrequence a struct for storing message count per day
 type MessageFrequence struct {
@@ -8,8 +12,7 @@ type MessageFrequence struct {
 	Count int
 }
 
-// SortFrequency sorts the frequency array by message count
-func SortFrequency(frequence []MessageFrequence) []MessageFrequence {
+func sortFrequency(frequence []MessageFrequence) []MessageFrequence {
 	for i := 0; i < len(frequence); i++ {
 		for k := i + 1; k < len(frequence); k++ {
 			if frequence[k].Count > frequence[i].Count {
@@ -32,39 +35,40 @@ func GetMessageFrequency(lines, dates []string) (frequency []MessageFrequence) {
 	return frequency
 }
 
-// GetDatesFromLines separates the dates from lines and returns these in array
-func GetDatesFromLines(lines []string) (dates []string) {
+// GetDatesFromLines parses dates from the lines and returns
+func GetDatesFromLines(lines []string) map[string]int {
+	re := regexp.MustCompile(`\[(.*?)]`)
+
+	dateMap := make(map[string]int, 0)
+
 	for _, line := range lines {
+		splitDate := strings.Split(re.FindString(line), " ")[0]
+		date := strings.TrimLeft(splitDate, "[")
 
-		if len(line) > 10 {
-			if (string(line[2]) == "." && string(line[5]) == "." && string(line[10]) == ",") &&
-				string(line[14]) == ":" && !Contains(dates, string(line[:10])) {
-
-				dates = append(dates, line[:10])
-			} else if (string(line[2]) == " " && string(line[5]) == " " && string(line[10]) == ",") &&
-				string(line[14]) == ":" && !Contains(dates, string(line[:10])) {
-
-				dates = append(dates, line[:10])
-			}
-		} else if len(line) > 9 {
-			if string(line[1]) == "." && string(line[4]) == "." && string(line[9]) == "," &&
-				string(line[13]) == ":" && !Contains(dates, string(line[:9])) {
-
-				dates = append(dates, line[:9])
-			} else if string(line[1]) == " " && string(line[4]) == " " && string(line[9]) == "," &&
-				string(line[13]) == ":" && !Contains(dates, string(line[:9])) {
-
-				dates = append(dates, line[:9])
-			}
+		if val, ok := dateMap[date]; ok {
+			dateMap[date] = val + 1
+		} else {
+			dateMap[date] = 1
 		}
 	}
-	return
+
+	return dateMap
 }
 
-// PrintMessageFrequence prints the frequencies
-func PrintMessageFrequence(frequence []MessageFrequence, start, end int) {
+// PrintMessageFrequency prints messaging the frequency
+func PrintMessageFrequency(dates map[string]int, start, end int) {
+	frequencyArray := make([]MessageFrequence, 0)
+	for key, value := range dates {
+		frequencyArray = append(frequencyArray, MessageFrequence{
+			Date:  key,
+			Count: value,
+		})
+	}
+
+	frequencyArray = sortFrequency(frequencyArray)
+
 	for i := start; i < end; i++ {
-		fmt.Printf("%d. %s \t %d\n", i+1, frequence[i].Date, frequence[i].Count)
+		fmt.Printf("%d. %s \t %d\n", i+1, frequencyArray[i].Date, frequencyArray[i].Count)
 	}
 }
 
@@ -79,7 +83,7 @@ func GetTimeFrequency(lines []string) (timeFrequence map[string]int) {
 	}
 
 	for _, line := range lines {
-		hourTime := getHourTime(getHourInLine(line))
+		hourTime := getHourTime(parseHour(line))
 		if _, ok := timeFrequence[hourTime]; ok {
 			timeFrequence[hourTime]++
 		}
@@ -88,9 +92,9 @@ func GetTimeFrequency(lines []string) (timeFrequence map[string]int) {
 	return
 }
 
-// PrintTimeFrequence prints the frequencies
-func PrintTimeFrequence(frequence map[string]int) {
-	for key, value := range frequence {
+// PrintTimeFrequency prints the frequencies
+func PrintTimeFrequency(frequencyMap map[string]int) {
+	for key, value := range frequencyMap {
 		fmt.Printf("%s message count: %d\n", key, value)
 	}
 }

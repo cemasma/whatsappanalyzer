@@ -80,7 +80,7 @@ func GetTopicsFromResult(input string) (topics []string) {
 // GetUsernames finds the usernames in lines and returns
 func GetUsernames(lines []string) (usernames []string) {
 	for _, line := range lines {
-		value := regexp.MustCompile(`- .*?:`).FindString(line)
+		value := regexp.MustCompile(`] (.*):`).FindString(line)
 		if len(value) > 2 && !Contains(usernames, value[2:len(value)-1]) {
 			usernames = append(usernames, value[2:len(value)-1])
 		}
@@ -90,11 +90,14 @@ func GetUsernames(lines []string) (usernames []string) {
 
 // SeparateWords parses the words from the lines and returns these in an array
 func SeparateWords(lines []string) []string {
+	replacer := strings.NewReplacer("\r", "", "\n", "")
+
 	words := []string{}
 	for _, value := range lines {
-		sentence := strings.Split(value, ":")
-		if len(sentence) > 2 {
-			wordArr := strings.Split(sentence[2], " ")
+		_, sentence, found := strings.Cut(value, ": ")
+		sentence = replacer.Replace(sentence)
+		if found {
+			wordArr := strings.Split(sentence, " ")
 			for _, word := range wordArr {
 				if word != " " && len(word) > 0 {
 					words = append(words, word)
@@ -144,16 +147,15 @@ func getHourTime(hour int) string {
 	return "time not found"
 }
 
-func getHourInLine(line string) int {
-	if len(line) >= 16 {
-		findedStr := regexp.MustCompile("(, )(.*)(.*:.. -)").FindString(line)
-		if len(findedStr) == 9 {
-			hour, err := strconv.Atoi(findedStr[2:4])
-			if err != nil {
-				return 25
-			}
-			return hour
+func parseHour(line string) int {
+	re := regexp.MustCompile(`\[(.*?)]`)
+	foundStr := re.FindString(line)
+	if foundStr != "" {
+		hour, err := strconv.Atoi(strings.Split(foundStr, " ")[1][0:2])
+		if err != nil {
+			return 25
 		}
+		return hour
 	}
 	return 25
 }

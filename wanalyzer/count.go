@@ -54,7 +54,7 @@ func SortWordsByCount(pureWords []string) []Word {
 
 func getMessageCount(lines []string, date string) (count int) {
 	for _, line := range lines {
-		if (len(date) == 10 && len(line) > 9 && line[:10] == date) || (len(date) == 9 && len(line) > 8 && line[:9] == date) {
+		if strings.HasPrefix(line, "["+date) {
 			count++
 		}
 	}

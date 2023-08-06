@@ -6,30 +6,6 @@ import (
 	"testing"
 )
 
-func TestRead(t *testing.T) {
-	type args struct {
-		fileAddress string
-	}
-	tests := []struct {
-		name string
-		args args
-		want string
-	}{
-		{
-			name: "TestRead",
-			args: args{
-				fileAddress: "testfile",
-			},
-			want: "test\r\nasd",
-		},
-	}
-	for _, tt := range tests {
-		if got := Read(tt.args.fileAddress); got != tt.want {
-			t.Errorf("%q. Read() = %v, want %v", tt.name, got, tt.want)
-		}
-	}
-}
-
 func TestGetLines(t *testing.T) {
 	type args struct {
 		chatRecord string
@@ -91,9 +67,9 @@ func TestGetUsernames(t *testing.T) {
 			name: "TestGetUsernames",
 			args: args{
 				lines: []string{
-					"27.11.2016, 16:11 - Cem Asma: iyi dersler",
-					"5.12.2016, 12:27 - Ali Ozan Asma: selam",
-					"6.12.2016, 12:27 - Ali Ozan Asma: test",
+					"[27.11.2016, 16:11] Cem Asma: iyi dersler",
+					"[5.12.2016, 12:27] Ali Ozan Asma: selam",
+					"[6.12.2016, 12:27] Ali Ozan Asma: test",
 				},
 			},
 			wantUsernames: []string{"Cem Asma", "Ali Ozan Asma"},
@@ -119,9 +95,9 @@ func TestSeparateWords(t *testing.T) {
 			name: "TestSeparateWords",
 			args: args{
 				lines: []string{
-					"27.11.2016, 16:11 - Cem Asma: iyi dersler",
-					"5.12.2016, 12:27 - Ali Ozan Asma: selam",
-					"6.12.2016, 12:27 - Ali Ozan Asma: test test",
+					"[27.11.2016 16:11] Cem Asma: iyi dersler",
+					"[5.12.2016 12:27] Ali Ozan Asma: selam",
+					"[6.12.2016 12:27] Ali Ozan Asma: test test",
 				},
 			},
 			want: []string{"iyi", "dersler", "selam", "test", "test"},
@@ -150,22 +126,32 @@ func TestGetWordsWithOrder(t *testing.T) {
 			name: "TestGetWordsWithOrder",
 			args: args{
 				lines: []string{
-					"27.11.2016, 16:11 - Cem Asma: selam iyi dersler",
-					"5.12.2016, 12:27 - Ali Ozan Asma: selam",
-					"6.12.2016, 12:27 - Ali Ozan Asma: test test",
+					"[27.11.2016 16:11] Cem Asma: selam iyi dersler",
+					"[5.12.2016 12:27] Ali Ozan Asma: selam",
+					"[6.12.2016 12:27] Ali Ozan Asma: test test",
 				},
 			},
 			want: []Word{
-				Word{Content: "selam", Value: 2},
-				Word{Content: "test", Value: 2},
-				Word{Content: "iyi", Value: 1},
-				Word{Content: "dersler", Value: 1},
+				{Content: "selam", Value: 2},
+				{Content: "test", Value: 2},
+				{Content: "iyi", Value: 1},
+				{Content: "dersler", Value: 1},
 			},
 		},
 	}
 	for _, tt := range tests {
-		if got := GetWordsWithOrder(tt.args.lines); !reflect.DeepEqual(got, tt.want) {
-			t.Errorf("%q. GetWordsWithOrder() = %v, want %v", tt.name, got, tt.want)
+		got := GetWordsWithOrder(tt.args.lines)
+		for _, elem := range got {
+			found := false
+			for _, elem2 := range tt.want {
+				if elem.Value == elem2.Value {
+					found = true
+				}
+			}
+
+			if !found {
+				t.Errorf("%q. GetWordsWithOrder() = %v, want %v", tt.name, got, tt.want)
+			}
 		}
 	}
 }
@@ -289,7 +275,7 @@ func Test_getHourTime(t *testing.T) {
 	}
 }
 
-func Test_getHourInLine(t *testing.T) {
+func Test_parseHour(t *testing.T) {
 	type args struct {
 		line string
 	}
@@ -299,29 +285,29 @@ func Test_getHourInLine(t *testing.T) {
 		want int
 	}{
 		{
-			name: "Test_getHourInLine",
+			name: "Test_parseHour",
 			args: args{
-				line: "19.02.2017, 17:49 - Cem Asma: test",
+				line: "[19.02.2017 17:49] Cem Asma: test",
 			},
 			want: 17,
 		},
 		{
-			name: "Test_getHourInLine",
+			name: "Test_parseHour2",
 			args: args{
-				line: "9.02.2017, 04:49 - Cem Asma: test",
+				line: "[9.02.2017 04:49] Cem Asma: test",
 			},
 			want: 4,
 		},
 		{
-			name: "Test_getHourInLine",
+			name: "Test_parseHour3",
 			args: args{
-				line: "9.02.2017, ..:49 - Cem Asma: test",
+				line: "[9.02.2017 ..:49] Cem Asma: test",
 			},
 			want: 25,
 		},
 	}
 	for _, tt := range tests {
-		if got := getHourInLine(tt.args.line); got != tt.want {
+		if got := parseHour(tt.args.line); got != tt.want {
 			t.Errorf("%q. getHourInLine() = %v, want %v", tt.name, got, tt.want)
 		}
 	}

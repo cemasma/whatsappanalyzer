@@ -26,3 +26,7 @@ main
 chat.txt
 
 chat2.txt
+
+.idea
+
+.DS_Store

@@ -67,7 +67,7 @@ func main() {
 
 		for key, val := range calculatedAgg {
 			if key != "total" {
-				percent := (float64((val * 100)) / float64(calculatedAgg["total"]))
+				percent := (val * 100) / calculatedAgg["total"]
 				fmt.Printf("%s %f percent aggressive by total. \n", key, percent)
 				fmt.Printf("%s's using count is %f\n\n", key, val)
 			}
@@ -85,26 +85,24 @@ func main() {
 	} else if *messageFrequency {
 
 		dates := wanalyzer.GetDatesFromLines(lines)
-		frequence := wanalyzer.GetMessageFrequency(lines, dates)
 
 		if *printFrequency {
-			frequence = wanalyzer.SortFrequency(frequence)
-			wanalyzer.PrintMessageFrequence(frequence, *start, *limit)
+			wanalyzer.PrintMessageFrequency(dates, *start, *limit)
 		} else {
 			drawer := wanalyzer.NewGraph(*username + " mf.png")
-			drawer.DrawFrequence(frequence)
+			drawer.DrawFrequency(dates)
 
 			fmt.Println("Graph of messaging frequency was created.")
 		}
 
 	} else if *timeFrequency {
-		timeFrequences := wanalyzer.GetTimeFrequency(lines)
+		timeFrequencies := wanalyzer.GetTimeFrequency(lines)
 
 		if *printFrequency {
-			wanalyzer.PrintTimeFrequence(timeFrequences)
+			wanalyzer.PrintTimeFrequency(timeFrequencies)
 		} else {
 			drawer := wanalyzer.NewGraph("timefrequences.png")
-			drawer.DrawTimeFrequence(timeFrequences)
+			drawer.DrawFrequency(timeFrequencies)
 
 			fmt.Println("Graph of messaging frequency in time periods was created.")
 		}

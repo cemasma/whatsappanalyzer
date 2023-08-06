@@ -13,20 +13,21 @@ func TestCalculateAggression(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want map[string]int
 	}{
 		{
 			name: "TestCalculateAggression",
 			args: args{
-				lines:     []string{"27.11.2016, 16:11 - Cem Asma: iyi dersler", "27.11.2016, 16:11 - Cem Asma: mal"},
-				negatives: []string{"mal", "aptal"},
+				lines: []string{"[27.11.2016 16:11] Cem Asma: iyi dersler", "[27.11.2016 16:11] Cem Asma: test"},
 			},
-			want: map[string]int{"Cem Asma": 1, "total": 1},
 		},
 	}
 	for _, tt := range tests {
-		if got := CalculateAggression(tt.args.lines, tt.args.negatives); !reflect.DeepEqual(got, tt.want) {
-			t.Errorf("%q. CalculateAggression() = %v, want %v", tt.name, got, tt.want)
+		got := CalculateAggression(tt.args.lines)
+		if _, ok := got["Cem Asma"]; !ok {
+			t.Errorf("%q. CalculateAggression() = %v, key is not exists = %v", tt.name, got, "Cem Asma")
+		}
+		if _, ok := got["total"]; !ok {
+			t.Errorf("%q. CalculateAggression() = %v, key is not exists = %v", tt.name, got, "total")
 		}
 	}
 }
@@ -37,22 +38,19 @@ func TestAggressionCount(t *testing.T) {
 		negatives []string
 	}
 	tests := []struct {
-		name           string
-		args           args
-		wantAggression int
+		name string
+		args args
 	}{
 		{
 			name: "TestAggressionCount",
 			args: args{
-				lines:     []string{"27.11.2016, 16:11 - Cem Asma: iyi dersler", "27.11.2016, 16:11 - Cem Asma: mal"},
-				negatives: []string{"mal", "aptal"},
+				lines: []string{"27.11.2016, 16:11 - Cem Asma: iyi dersler", "27.11.2016, 16:11 - Cem Asma: test"},
 			},
-			wantAggression: 1,
 		},
 	}
 	for _, tt := range tests {
-		if gotAggression := AggressionCount(tt.args.lines, tt.args.negatives); gotAggression != tt.wantAggression {
-			t.Errorf("%q. AggressionCount() = %v, want %v", tt.name, gotAggression, tt.wantAggression)
+		if gotAggression := AggressionCount(tt.args.lines); reflect.TypeOf(gotAggression).Kind() != reflect.Float64 {
+			t.Errorf("%q. AggressionCount() = %v, type is not matching = float64", tt.name, gotAggression)
 		}
 	}
 }

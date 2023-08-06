@@ -17,7 +17,11 @@ func CalculateAggression(lines []string) map[string]float64 {
 		aggression[username] = AggressionCount(GetUserLines(lines, username))
 	}
 
-	aggression["total"] = AggressionCount(lines)
+	total := 0.0
+	for _, val := range aggression {
+		total += val
+	}
+	aggression["total"] = total
 	return aggression
 }
 
@@ -25,12 +29,9 @@ func CalculateAggression(lines []string) map[string]float64 {
 func AggressionCount(lines []string) (aggression float64) {
 
 	for _, line := range lines {
-		splittedLine := strings.Split(line, ":")
+		_, sentence, found := strings.Cut(line, ":")
 
-		if len(splittedLine) > 2 {
-
-			sentence := splittedLine[2]
-
+		if found {
 			cmd := exec.Command("python", "analysis_scripts/analysis.py", "--sentence=\""+sentence+"\"", "--type=sentiment")
 
 			out, err := cmd.Output()
